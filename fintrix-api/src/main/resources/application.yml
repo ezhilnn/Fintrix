@@ -1,0 +1,80 @@
+# ================================================================
+# Fintrix API - Main Application Configuration
+# ================================================================
+
+spring:
+  application:
+    name: fintrix-api
+
+  profiles:
+    active: dev
+
+  # ── JPA ────────────────────────────────────────────────────
+  jpa:
+    hibernate:
+      ddl-auto: validate          # Flyway manages schema — never use create/update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        jdbc:
+          batch_size: 20
+        order_inserts: true
+        order_updates: true
+
+  # ── Flyway ─────────────────────────────────────────────────
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+  # ── OAuth2 Google Login ─────────────────────────────────────
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 460779659460-k54qlv3epdj2u1k4f8n6mjlklel7rut5.apps.googleusercontent.com 
+            client-secret: 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
+            scope:
+              - email
+              - profile
+        redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/auth
+            token-uri: https://oauth2.googleapis.com/token
+            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+            user-name-attribute: sub
+
+  # ── Cache ───────────────────────────────────────────────────
+  cache:
+    type: redis
+
+# ── App-level JWT config ─────────────────────────────────────
+fintrix:
+  jwt:
+    secret: "fintrix-super-secure-jwt-secret-key-for-production-very-long"
+    expiration-ms: 86400000        # 24 hours
+    refresh-expiration-ms: 604800000  # 7 days
+  oauth2:
+    authorized-redirect-uris:
+      - http://localhost:5173/oauth2/callback
+      - https://fintrix.vercel.app/oauth2/callback
+      - http://localhost:3000/oauth2/redirect
+  cors:
+    allowed-origins:
+      - http://localhost:5173
+      - https://fintrix.vercel.app
+
+# ── Actuator ─────────────────────────────────────────────────
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
+
