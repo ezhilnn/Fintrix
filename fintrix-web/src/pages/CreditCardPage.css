@@ -1,0 +1,345 @@
+﻿/* ================================================================
+   CreditCardPage.css
+   BEM root: .card-page
+   POST /api/v1/credit-cards/recommendations
+================================================================ */
+
+@import '../styles/variables.css';
+
+/* ── Page shell ──────────────────────────────────────────────── */
+.card-page {
+  font-family: var(--font-body);
+  min-height: 100vh;
+  background: var(--color-bg-base);
+  padding: var(--space-10) var(--space-6) var(--space-20);
+}
+
+.card-page__header {
+  margin-bottom: var(--space-8);
+  animation: cpFade 0.4s ease both;
+}
+
+.card-page__eyebrow {
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-brand-primary);
+  margin-bottom: var(--space-2);
+}
+
+.card-page__title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  color: var(--color-text-primary);
+  letter-spacing: var(--tracking-snug);
+  margin-bottom: var(--space-2);
+}
+
+.card-page__sub {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  font-weight: var(--font-light);
+}
+
+/* ── Filter bar ──────────────────────────────────────────────── */
+.card-page__filters {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-end;
+  flex-wrap: wrap;
+  padding: var(--space-5) var(--space-6);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-8);
+  animation: cpFade 0.4s 0.08s ease both;
+}
+
+.card-page__filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  flex: 1;
+  min-width: 160px;
+}
+
+.card-page__filter-label {
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.card-page__filter-checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 40px;
+  cursor: pointer;
+}
+
+.card-page__filter-checkbox-label {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ── Tips / warnings ─────────────────────────────────────────── */
+.card-page__tip {
+  margin-bottom: var(--space-5);
+  padding: var(--space-3) var(--space-5);
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid var(--color-border-brand);
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-normal);
+}
+
+.card-page__multi-warn {
+  margin-bottom: var(--space-5);
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-warning-bg);
+  border: 1px solid var(--color-warning-border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  color: var(--color-warning);
+}
+
+/* ── Section headers ─────────────────────────────────────────── */
+.card-page__section-title {
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: var(--space-8) 0 var(--space-5);
+}
+
+.card-page__section-title:first-of-type {
+  margin-top: 0;
+}
+
+/* ── Card grid ───────────────────────────────────────────────── */
+.card-page__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-5);
+  animation: cpFade 0.4s 0.14s ease both;
+}
+
+/* ── Individual credit card tile ─────────────────────────────── */
+.card-page__card-tile {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-page__card-tile--recommended {
+  border-color: var(--color-border-brand);
+}
+
+.card-page__card-tile--recommended::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--color-brand-primary),
+    var(--color-brand-accent)
+  );
+}
+
+.card-page__card-tile--future {
+  opacity: 0.6;
+}
+
+.card-page__card-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-brand);
+  opacity: 1;
+}
+
+/* Card tile header */
+.card-page__tile-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.card-page__tile-names {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.card-page__tile-bank {
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.card-page__tile-card-name {
+  font-size: var(--text-md);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-primary);
+  line-height: var(--leading-snug);
+}
+
+/* Approval probability ring */
+.card-page__tile-prob {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.card-page__tile-prob-val {
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-primary);
+  line-height: 1;
+}
+
+.card-page__tile-prob-label {
+  font-size: var(--text-xs);
+  color: var(--color-text-disabled);
+}
+
+/* Fee row */
+.card-page__tile-fees {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.card-page__tile-fee {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.card-page__tile-fee-label {
+  font-size: var(--text-xs);
+  color: var(--color-text-disabled);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.card-page__tile-fee-value {
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+}
+
+/* Benefits list */
+.card-page__tile-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.card-page__tile-benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-snug);
+}
+
+.card-page__tile-benefit-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-brand-primary);
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+/* Match reason */
+.card-page__tile-match {
+  font-size: var(--text-xs);
+  color: var(--color-brand-primary);
+  font-style: italic;
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+/* Failure reasons */
+.card-page__tile-reasons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.card-page__tile-reason {
+  font-size: var(--text-xs);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-danger-bg);
+  color: var(--color-danger-text);
+  border: 1px solid var(--color-danger-border);
+}
+
+/* ── Loading / empty states ──────────────────────────────────── */
+.card-page__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-20) 0;
+}
+
+.card-page__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-20) var(--space-6);
+  text-align: center;
+}
+
+.card-page__empty-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.card-page__empty-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--color-text-secondary);
+}
+
+/* ── Animations ──────────────────────────────────────────────── */
+@keyframes cpFade {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .card-page { padding: var(--space-6) var(--space-4) var(--space-16); }
+  .card-page__filters { gap: var(--space-3); }
+  .card-page__grid { grid-template-columns: 1fr; }
+}

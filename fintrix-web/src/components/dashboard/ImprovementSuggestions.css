@@ -1,0 +1,13 @@
+﻿/* ================================================================
+   ImprovementSuggestions.css
+   Styles scoped to .improvement-suggestions
+   Uses design tokens from src/styles/variables.css
+================================================================ */
+
+/* Always import variables — never hard-code colours or spacing */
+@import '../styles/variables.css';
+
+/* ── Root wrapper ────────────────────────────────────────────── */
+.improvement-suggestions {
+  /* Add component styles here */
+}

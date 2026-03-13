@@ -1,0 +1,13 @@
+﻿/* ================================================================
+   SpendingBreakdownChart.css
+   Styles scoped to .spending-breakdown-chart
+   Uses design tokens from src/styles/variables.css
+================================================================ */
+
+/* Always import variables — never hard-code colours or spacing */
+@import '../styles/variables.css';
+
+/* ── Root wrapper ────────────────────────────────────────────── */
+.spending-breakdown-chart {
+  /* Add component styles here */
+}

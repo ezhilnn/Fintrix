@@ -1,0 +1,13 @@
+﻿/* ================================================================
+   FraudCheckForm.css
+   Styles scoped to .fraud-check-form
+   Uses design tokens from src/styles/variables.css
+================================================================ */
+
+/* Always import variables — never hard-code colours or spacing */
+@import '../styles/variables.css';
+
+/* ── Root wrapper ────────────────────────────────────────────── */
+.fraud-check-form {
+  /* Add component styles here */
+}

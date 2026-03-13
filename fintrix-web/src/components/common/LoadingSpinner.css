@@ -1,0 +1,13 @@
+﻿/* ================================================================
+   LoadingSpinner.css
+   Styles scoped to .loading-spinner
+   Uses design tokens from src/styles/variables.css
+================================================================ */
+
+/* Always import variables — never hard-code colours or spacing */
+@import '../styles/variables.css';
+
+/* ── Root wrapper ────────────────────────────────────────────── */
+.loading-spinner {
+  /* Add component styles here */
+}

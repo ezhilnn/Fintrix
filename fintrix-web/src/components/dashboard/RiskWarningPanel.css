@@ -1,0 +1,13 @@
+﻿/* ================================================================
+   RiskWarningPanel.css
+   Styles scoped to .risk-warning-panel
+   Uses design tokens from src/styles/variables.css
+================================================================ */
+
+/* Always import variables — never hard-code colours or spacing */
+@import '../styles/variables.css';
+
+/* ── Root wrapper ────────────────────────────────────────────── */
+.risk-warning-panel {
+  /* Add component styles here */
+}

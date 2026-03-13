@@ -1,0 +1,13 @@
+﻿/* ================================================================
+   LoanEligibilityForm.css
+   Styles scoped to .loan-eligibility-form
+   Uses design tokens from src/styles/variables.css
+================================================================ */
+
+/* Always import variables — never hard-code colours or spacing */
+@import '../styles/variables.css';
+
+/* ── Root wrapper ────────────────────────────────────────────── */
+.loan-eligibility-form {
+  /* Add component styles here */
+}

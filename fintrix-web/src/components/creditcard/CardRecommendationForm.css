@@ -1,0 +1,13 @@
+﻿/* ================================================================
+   CardRecommendationForm.css
+   Styles scoped to .card-recommendation-form
+   Uses design tokens from src/styles/variables.css
+================================================================ */
+
+/* Always import variables — never hard-code colours or spacing */
+@import '../styles/variables.css';
+
+/* ── Root wrapper ────────────────────────────────────────────── */
+.card-recommendation-form {
+  /* Add component styles here */
+}

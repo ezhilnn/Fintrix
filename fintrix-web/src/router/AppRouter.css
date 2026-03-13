@@ -1,0 +1,13 @@
+﻿/* ================================================================
+   AppRouter.css
+   Styles scoped to .app-router
+   Uses design tokens from src/styles/variables.css
+================================================================ */
+
+/* Always import variables — never hard-code colours or spacing */
+@import '../styles/variables.css';
+
+/* ── Root wrapper ────────────────────────────────────────────── */
+.app-router {
+  /* Add component styles here */
+}

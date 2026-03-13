@@ -1,0 +1,13 @@
+﻿/* ================================================================
+   EmiReminderWidget.css
+   Styles scoped to .emi-reminder-widget
+   Uses design tokens from src/styles/variables.css
+================================================================ */
+
+/* Always import variables — never hard-code colours or spacing */
+@import '../styles/variables.css';
+
+/* ── Root wrapper ────────────────────────────────────────────── */
+.emi-reminder-widget {
+  /* Add component styles here */
+}

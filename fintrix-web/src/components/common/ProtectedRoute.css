@@ -1,0 +1,40 @@
+﻿/* ================================================================
+   ProtectedRoute.css
+   BEM root: .protected-route
+================================================================ */
+
+@import '../../styles/variables.css';
+
+.protected-route__loader {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-base);
+}
+
+.protected-route__spinner-wrap {
+  position: relative;
+  width: 44px;
+  height: 44px;
+}
+
+.protected-route__spinner-track {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid var(--color-border-subtle);
+}
+
+.protected-route__spinner-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: var(--color-brand-primary);
+  animation: prSpin 0.7s linear infinite;
+}
+
+@keyframes prSpin {
+  to { transform: rotate(360deg); }
+}

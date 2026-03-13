@@ -1,0 +1,103 @@
+﻿/* ================================================================
+   OAuthCallbackPage.css
+   BEM root: .oauth-callback
+================================================================ */
+
+@import '../styles/variables.css';
+
+.oauth-callback {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-base);
+  font-family: var(--font-body);
+}
+
+/* ── Loading state ───────────────────────────────────────────── */
+.oauth-callback__loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+  animation: fadeIn 0.3s ease both;
+}
+
+.oauth-callback__spinner-wrap {
+  position: relative;
+  width: 56px;
+  height: 56px;
+}
+
+.oauth-callback__spinner-track {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid var(--color-border-subtle);
+}
+
+.oauth-callback__spinner-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: var(--color-brand-primary);
+  animation: oauthSpin 0.7s linear infinite;
+}
+
+.oauth-callback__label {
+  text-align: center;
+}
+
+.oauth-callback__label-primary {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--color-text-primary);
+  letter-spacing: var(--tracking-snug);
+  margin-bottom: var(--space-1);
+}
+
+.oauth-callback__label-secondary {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  font-weight: var(--font-light);
+}
+
+/* ── Error state ─────────────────────────────────────────────── */
+.oauth-callback__error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+  animation: fadeIn 0.3s ease both;
+}
+
+.oauth-callback__error-icon {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.oauth-callback__error-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: var(--color-text-primary);
+}
+
+.oauth-callback__error-msg {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  font-weight: var(--font-light);
+  max-width: 300px;
+  line-height: var(--leading-normal);
+}
+
+/* ── Animations ──────────────────────────────────────────────── */
+@keyframes oauthSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

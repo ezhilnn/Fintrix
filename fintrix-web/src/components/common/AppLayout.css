@@ -1,0 +1,31 @@
+/* ================================================================
+   AppLayout.css
+   BEM root: .app-layout
+   Wraps Sidebar (left) + main content (right).
+   All protected pages render inside .app-layout__main
+================================================================ */
+
+@import '../../styles/variables.css';
+
+/* ── Shell ───────────────────────────────────────────────────── */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--color-bg-base);
+}
+
+/* ── Main content area — sits to the right of the sidebar ────── */
+.app-layout__main {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  min-height: 100vh;
+  /* Each page handles its own padding internally */
+}
+
+/* ── Responsive — on mobile sidebar is overlaid, not pushed ───── */
+@media (max-width: 768px) {
+  .app-layout__main {
+    margin-left: 0;
+    padding-top: var(--navbar-height);  /* clear the fixed Topbar */
+  }
+}

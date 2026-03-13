@@ -1,0 +1,13 @@
+﻿/* ================================================================
+   main.css
+   Styles scoped to .main
+   Uses design tokens from src/styles/variables.css
+================================================================ */
+
+/* Always import variables — never hard-code colours or spacing */
+@import '../styles/variables.css';
+
+/* ── Root wrapper ────────────────────────────────────────────── */
+.main {
+  /* Add component styles here */
+}

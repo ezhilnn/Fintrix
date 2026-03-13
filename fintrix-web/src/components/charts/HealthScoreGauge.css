@@ -1,0 +1,13 @@
+﻿/* ================================================================
+   HealthScoreGauge.css
+   Styles scoped to .health-score-gauge
+   Uses design tokens from src/styles/variables.css
+================================================================ */
+
+/* Always import variables — never hard-code colours or spacing */
+@import '../styles/variables.css';
+
+/* ── Root wrapper ────────────────────────────────────────────── */
+.health-score-gauge {
+  /* Add component styles here */
+}

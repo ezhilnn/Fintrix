@@ -1,0 +1,13 @@
+﻿/* ================================================================
+   LoanResultCard.css
+   Styles scoped to .loan-result-card
+   Uses design tokens from src/styles/variables.css
+================================================================ */
+
+/* Always import variables — never hard-code colours or spacing */
+@import '../styles/variables.css';
+
+/* ── Root wrapper ────────────────────────────────────────────── */
+.loan-result-card {
+  /* Add component styles here */
+}
