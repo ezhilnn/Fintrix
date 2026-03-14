@@ -9,12 +9,17 @@ import lombok.Getter;
 
 import java.math.BigDecimal;
 import java.util.List;
+import lombok.*;
 
 /**
  * CardResult — one card's recommendation result
  */
+
+
 @Getter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CardResult {
     private String      cardId;
     private String      bankName;

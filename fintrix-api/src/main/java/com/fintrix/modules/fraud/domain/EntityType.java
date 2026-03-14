@@ -1,6 +1,5 @@
-// ── EntityType.java ──────────────────────────────────────────────
 package com.fintrix.modules.fraud.domain;
-
+ 
 public enum EntityType {
     INVESTMENT_SCHEME,
     LENDER,
