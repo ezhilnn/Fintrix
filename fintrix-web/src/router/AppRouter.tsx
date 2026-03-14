@@ -8,7 +8,7 @@
 // but ProtectedRoute won't block them even if profile incomplete.
 // ================================================================
 
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { useEffect, lazy, Suspense } from 'react';
 
 import ProtectedRoute from '../components/common/ProtectedRoute';
@@ -17,8 +17,9 @@ import useAuthStore   from '../store/authStore';
 import { ROUTES }     from '../utils/constants';
 
 // Public — eager (tiny, always needed immediately)
-import LoginPage         from '../pages/LoginPage';
-import OAuthCallbackPage from '../pages/OAuthCallbackPage';
+import LoginPage            from '../pages/LoginPage';
+import OAuthCallbackPage    from '../pages/OAuthCallbackPage';
+import AccountDeactivatedPage from '../pages/AccountDeactivatedPage';
 
 // Protected — lazy loaded for code splitting
 const DashboardPage        = lazy(() => import('../pages/DashboardPage'));
@@ -42,6 +43,18 @@ const ProtectedLayout = ({ children }: { children: React.ReactNode }) => (
   </ProtectedRoute>
 );
 
+// Listens for deactivation event fired by userStore and redirects
+// Must be rendered INSIDE BrowserRouter to use useNavigate
+const DeactivationListener = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const handler = () => navigate(ROUTES.ACCOUNT_DEACTIVATED, { replace: true });
+    window.addEventListener('fintrix:account-deactivated', handler);
+    return () => window.removeEventListener('fintrix:account-deactivated', handler);
+  }, [navigate]);
+  return null;
+};
+
 const AppRouter = () => {
   const initAuth = useAuthStore(s => s.initAuth);
 
@@ -51,12 +64,14 @@ const AppRouter = () => {
 
   return (
     <BrowserRouter>
+      <DeactivationListener />
       <Suspense fallback={<PageLoader />}>
         <Routes>
 
           {/* ── Public routes ────────────────────────────────── */}
-          <Route path={ROUTES.LOGIN}          element={<LoginPage />} />
-          <Route path={ROUTES.OAUTH_CALLBACK} element={<OAuthCallbackPage />} />
+          <Route path={ROUTES.LOGIN}                 element={<LoginPage />} />
+          <Route path={ROUTES.OAUTH_CALLBACK}        element={<OAuthCallbackPage />} />
+          <Route path={ROUTES.ACCOUNT_DEACTIVATED}   element={<AccountDeactivatedPage />} />
 
           {/* ── Root redirect ─────────────────────────────────── */}
           <Route path="/" element={<Navigate to={ROUTES.DASHBOARD} replace />} />

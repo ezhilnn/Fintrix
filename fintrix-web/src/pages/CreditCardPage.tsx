@@ -39,13 +39,30 @@ const CardTile = ({
       <div className="card-page__tile-names">
         <span className="card-page__tile-bank">{card.bankName}</span>
         <span className="card-page__tile-card-name">{card.cardName}</span>
-        <span className="badge badge-info" style={{ marginTop: 4, alignSelf: 'flex-start' }}>
-          {card.cardCategory.replace('_', ' ')}
-        </span>
+        <div style={{ display: 'flex', gap: 'var(--space-2)', marginTop: 4, flexWrap: 'wrap' }}>
+          <span className="badge badge-info" style={{ alignSelf: 'flex-start' }}>
+            {card.cardCategory.replace('_', ' ')}
+          </span>
+          {card.rewardType && card.rewardType !== 'NONE' && (
+            <span className="badge badge-brand" style={{ alignSelf: 'flex-start' }}>
+              {card.rewardType.replace('_', ' ')}
+            </span>
+          )}
+        </div>
       </div>
-      <div className="card-page__tile-prob">
-        <span className="card-page__tile-prob-val">{card.approvalProbability}%</span>
-        <span className="card-page__tile-prob-label">approval</span>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 'var(--space-2)' }}>
+        {card.logoUrl && (
+          <img
+            src={card.logoUrl}
+            alt={card.bankName}
+            style={{ height: 28, width: 'auto', objectFit: 'contain', borderRadius: 4 }}
+            onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }}
+          />
+        )}
+        <div className="card-page__tile-prob">
+          <span className="card-page__tile-prob-val">{card.approvalProbability}%</span>
+          <span className="card-page__tile-prob-label">approval</span>
+        </div>
       </div>
     </div>
 
@@ -85,6 +102,20 @@ const CardTile = ({
             <span>{b}</span>
           </div>
         ))}
+      </div>
+    )}
+
+    {/* Welcome / joining benefit */}
+    {card.welcomeBenefit && (
+      <div style={{
+        fontSize: 'var(--text-xs)',
+        padding: '6px 10px',
+        background: 'rgba(16,185,129,0.06)',
+        border: '1px solid var(--color-border-brand)',
+        borderRadius: 'var(--radius-md)',
+        color: 'var(--color-brand-primary)',
+      }}>
+        🎁 {card.welcomeBenefit}
       </div>
     )}
 

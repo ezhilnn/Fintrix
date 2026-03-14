@@ -325,6 +325,43 @@
   line-height: var(--leading-normal);
 }
 
+/* ── User snapshot bar (shows profile used for check) ────────── */
+.loan-page__snapshot {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-bg-input);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-6);
+}
+
+.loan-page__snapshot-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.loan-page__snapshot-label {
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-disabled);
+}
+
+.loan-page__snapshot-value {
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 600px) {
+  .loan-page__snapshot { grid-template-columns: repeat(2, 1fr); }
+}
+
 /* ── Animations ──────────────────────────────────────────────── */
 @keyframes loanFade {
   from { opacity: 0; transform: translateY(12px); }

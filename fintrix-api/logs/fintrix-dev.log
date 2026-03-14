@@ -1,112 +1,112 @@
-2026-03-13T23:06:35.137+05:30  INFO 16500 --- [fintrix-api] [restartedMain] com.fintrix.FintrixApplication           : Starting FintrixApplication using Java 17.0.18 with PID 16500 (E:\Fintrix\fintrix-api\target\classes started by ezhil in E:\Fintrix\fintrix-api)
-2026-03-13T23:06:35.145+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] com.fintrix.FintrixApplication           : Running with Spring Boot v3.2.4, Spring v6.1.5
-2026-03-13T23:06:35.148+05:30  INFO 16500 --- [fintrix-api] [restartedMain] com.fintrix.FintrixApplication           : The following 1 profile is active: "dev"
-2026-03-13T23:06:35.209+05:30  INFO 16500 --- [fintrix-api] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2026-03-13T23:06:35.209+05:30  INFO 16500 --- [fintrix-api] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2026-03-13T23:06:36.087+05:30  INFO 16500 --- [fintrix-api] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2026-03-13T23:06:36.089+05:30  INFO 16500 --- [fintrix-api] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-03-13T23:06:36.309+05:30  INFO 16500 --- [fintrix-api] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 207 ms. Found 6 JPA repository interfaces.
-2026-03-13T23:06:36.916+05:30  INFO 16500 --- [fintrix-api] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2026-03-13T23:06:36.921+05:30  INFO 16500 --- [fintrix-api] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2026-03-13T23:06:36.955+05:30  INFO 16500 --- [fintrix-api] [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.fintrix.modules.creditcard.repository.CreditCardRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2026-03-13T23:06:36.959+05:30  INFO 16500 --- [fintrix-api] [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.fintrix.modules.decisionengine.repository.FinancialHealthScoreRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2026-03-13T23:06:36.960+05:30  INFO 16500 --- [fintrix-api] [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.fintrix.modules.financialprofile.repository.FinancialProfileRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2026-03-13T23:06:36.960+05:30  INFO 16500 --- [fintrix-api] [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.fintrix.modules.fraud.repository.FraudAlertRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2026-03-13T23:06:36.960+05:30  INFO 16500 --- [fintrix-api] [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.fintrix.modules.loan.repository.LenderRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2026-03-13T23:06:36.960+05:30  INFO 16500 --- [fintrix-api] [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.fintrix.modules.user.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2026-03-13T23:06:36.960+05:30  INFO 16500 --- [fintrix-api] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 0 Redis repository interfaces.
-2026-03-13T23:06:38.242+05:30  INFO 16500 --- [fintrix-api] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2026-03-13T23:06:38.258+05:30  INFO 16500 --- [fintrix-api] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-03-13T23:06:38.258+05:30  INFO 16500 --- [fintrix-api] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
-2026-03-13T23:06:38.319+05:30  INFO 16500 --- [fintrix-api] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-03-13T23:06:38.319+05:30  INFO 16500 --- [fintrix-api] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3106 ms
-2026-03-13T23:06:38.609+05:30  INFO 16500 --- [fintrix-api] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-03-13T23:06:38.830+05:30  INFO 16500 --- [fintrix-api] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5e0d1246
-2026-03-13T23:06:38.830+05:30  INFO 16500 --- [fintrix-api] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-03-13T23:06:38.944+05:30  INFO 16500 --- [fintrix-api] [restartedMain] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
-2026-03-13T23:06:38.944+05:30  INFO 16500 --- [fintrix-api] [restartedMain] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
-2026-03-13T23:06:38.944+05:30  INFO 16500 --- [fintrix-api] [restartedMain] o.f.c.internal.license.VersionPrinter    : 
-2026-03-13T23:06:38.949+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Scanning for classpath resources at 'classpath:db/callback' ...
-2026-03-13T23:06:38.949+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Determining location urls for classpath:db/callback using ClassLoader TomcatEmbeddedWebappClassLoader
+2026-03-14T18:51:39.327+05:30  INFO 20768 --- [fintrix-api] [restartedMain] com.fintrix.FintrixApplication           : Starting FintrixApplication using Java 17.0.18 with PID 20768 (E:\Fintrix\fintrix-api\target\classes started by ezhil in E:\Fintrix\fintrix-api)
+2026-03-14T18:51:39.333+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] com.fintrix.FintrixApplication           : Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-03-14T18:51:39.334+05:30  INFO 20768 --- [fintrix-api] [restartedMain] com.fintrix.FintrixApplication           : The following 1 profile is active: "dev"
+2026-03-14T18:51:39.374+05:30  INFO 20768 --- [fintrix-api] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-14T18:51:39.374+05:30  INFO 20768 --- [fintrix-api] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-14T18:51:39.997+05:30  INFO 20768 --- [fintrix-api] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-14T18:51:39.997+05:30  INFO 20768 --- [fintrix-api] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-14T18:51:40.133+05:30  INFO 20768 --- [fintrix-api] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 130 ms. Found 6 JPA repository interfaces.
+2026-03-14T18:51:40.487+05:30  INFO 20768 --- [fintrix-api] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-14T18:51:40.494+05:30  INFO 20768 --- [fintrix-api] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-14T18:51:40.527+05:30  INFO 20768 --- [fintrix-api] [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.fintrix.modules.creditcard.repository.CreditCardRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-03-14T18:51:40.531+05:30  INFO 20768 --- [fintrix-api] [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.fintrix.modules.decisionengine.repository.FinancialHealthScoreRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-03-14T18:51:40.532+05:30  INFO 20768 --- [fintrix-api] [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.fintrix.modules.financialprofile.repository.FinancialProfileRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-03-14T18:51:40.533+05:30  INFO 20768 --- [fintrix-api] [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.fintrix.modules.fraud.repository.FraudAlertRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-03-14T18:51:40.533+05:30  INFO 20768 --- [fintrix-api] [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.fintrix.modules.loan.repository.LenderRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-03-14T18:51:40.533+05:30  INFO 20768 --- [fintrix-api] [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.fintrix.modules.user.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-03-14T18:51:40.533+05:30  INFO 20768 --- [fintrix-api] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 0 Redis repository interfaces.
+2026-03-14T18:51:42.172+05:30  INFO 20768 --- [fintrix-api] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-14T18:51:42.208+05:30  INFO 20768 --- [fintrix-api] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-14T18:51:42.212+05:30  INFO 20768 --- [fintrix-api] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-03-14T18:51:42.400+05:30  INFO 20768 --- [fintrix-api] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-14T18:51:42.414+05:30  INFO 20768 --- [fintrix-api] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3037 ms
+2026-03-14T18:51:43.117+05:30  INFO 20768 --- [fintrix-api] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-14T18:51:43.551+05:30  INFO 20768 --- [fintrix-api] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1cebc05c
+2026-03-14T18:51:43.553+05:30  INFO 20768 --- [fintrix-api] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-14T18:51:43.773+05:30  INFO 20768 --- [fintrix-api] [restartedMain] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
+2026-03-14T18:51:43.773+05:30  INFO 20768 --- [fintrix-api] [restartedMain] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2026-03-14T18:51:43.780+05:30  INFO 20768 --- [fintrix-api] [restartedMain] o.f.c.internal.license.VersionPrinter    : 
+2026-03-14T18:51:43.782+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Scanning for classpath resources at 'classpath:db/callback' ...
+2026-03-14T18:51:43.782+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Determining location urls for classpath:db/callback using ClassLoader TomcatEmbeddedWebappClassLoader
   context: ROOT
   delegate: true
 ----------> Parent Classloader:
 org.springframework.boot.devtools.restart.classloader.RestartClassLoader@665c4f3b
  ...
-2026-03-13T23:06:38.949+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Unable to resolve location classpath:db/callback.
-2026-03-13T23:06:38.949+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Scanning for classpath resources at 'classpath:db/migration' ...
-2026-03-13T23:06:38.951+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Determining location urls for classpath:db/migration using ClassLoader TomcatEmbeddedWebappClassLoader
+2026-03-14T18:51:43.782+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Unable to resolve location classpath:db/callback.
+2026-03-14T18:51:43.782+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Scanning for classpath resources at 'classpath:db/migration' ...
+2026-03-14T18:51:43.782+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Determining location urls for classpath:db/migration using ClassLoader TomcatEmbeddedWebappClassLoader
   context: ROOT
   delegate: true
 ----------> Parent Classloader:
 org.springframework.boot.devtools.restart.classloader.RestartClassLoader@665c4f3b
  ...
-2026-03-13T23:06:38.951+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Scanning URL: file:/E:/Fintrix/fintrix-api/target/classes/db/migration
-2026-03-13T23:06:38.953+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] i.s.c.FileSystemClassPathLocationScanner : Scanning starting at classpath root in filesystem: E:\Fintrix\fintrix-api\target\classes\
-2026-03-13T23:06:38.959+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] i.s.c.FileSystemClassPathLocationScanner : Scanning for resources in path: E:\Fintrix\fintrix-api\target\classes\db\migration (db/migration)
-2026-03-13T23:06:38.961+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Found resource: db/migration/V1__create_users_table.sql
-2026-03-13T23:06:38.961+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Found resource: db/migration/V2__create_financial_profiles_table.sql
-2026-03-13T23:06:38.961+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Found resource: db/migration/V3__create_loans_lenders_table.sql
-2026-03-13T23:06:38.961+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Found resource: db/migration/V4__create_credit_cards_table.sql
-2026-03-13T23:06:38.961+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Found resource: db/migration/V5__create_financial_health_scores_table.sql
-2026-03-13T23:06:38.961+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Found resource: db/migration/V6__create_fraud_alerts_table.sql
-2026-03-13T23:06:38.961+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Found resource: db/migration/V7__seed_lenders_data.sql
-2026-03-13T23:06:38.961+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Found resource: db/migration/V8__seed_credit_cards_data.sql
-2026-03-13T23:06:38.961+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Scanning for classes at classpath:db/migration
-2026-03-13T23:06:38.968+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.resource.ResourceNameValidator   : Validating V4__create_credit_cards_table.sql
-2026-03-13T23:06:38.968+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.resource.ResourceNameValidator   : Validating V7__seed_lenders_data.sql
-2026-03-13T23:06:38.968+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.resource.ResourceNameValidator   : Validating V1__create_users_table.sql
-2026-03-13T23:06:38.968+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.resource.ResourceNameValidator   : Validating V5__create_financial_health_scores_table.sql
-2026-03-13T23:06:38.970+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.resource.ResourceNameValidator   : Validating V8__seed_credit_cards_data.sql
-2026-03-13T23:06:38.970+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.resource.ResourceNameValidator   : Validating V3__create_loans_lenders_table.sql
-2026-03-13T23:06:38.970+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.resource.ResourceNameValidator   : Validating V6__create_fraud_alerts_table.sql
-2026-03-13T23:06:38.971+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.resource.ResourceNameValidator   : Validating V2__create_financial_profiles_table.sql
-2026-03-13T23:06:38.983+05:30  INFO 16500 --- [fintrix-api] [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/fintrix_dev (PostgreSQL 18.1)
-2026-03-13T23:06:38.983+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] org.flywaydb.core.FlywayExecutor         : Driver: PostgreSQL JDBC Driver 42.6.2
-2026-03-13T23:06:38.983+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] org.flywaydb.core.FlywayExecutor         : DDL Transactions Supported: true
-2026-03-13T23:06:38.986+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.s.SchemaHistoryFactory           : Schemas: 
-2026-03-13T23:06:38.986+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.s.SchemaHistoryFactory           : Default schema: null
-2026-03-13T23:06:38.994+05:30  WARN 16500 --- [fintrix-api] [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 18.1 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
-2026-03-13T23:06:38.995+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.c.i.c.SqlScriptCallbackFactory       : Scanning for SQL callbacks ...
-2026-03-13T23:06:39.010+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.core.internal.command.DbValidate     : Validating migrations ...
-2026-03-13T23:06:39.025+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V4__create_credit_cards_table.sql (filename: V4__create_credit_cards_table.sql)
-2026-03-13T23:06:39.025+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V7__seed_lenders_data.sql (filename: V7__seed_lenders_data.sql)
-2026-03-13T23:06:39.025+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V1__create_users_table.sql (filename: V1__create_users_table.sql)
-2026-03-13T23:06:39.025+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V5__create_financial_health_scores_table.sql (filename: V5__create_financial_health_scores_table.sql)
-2026-03-13T23:06:39.025+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V8__seed_credit_cards_data.sql (filename: V8__seed_credit_cards_data.sql)
-2026-03-13T23:06:39.025+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V3__create_loans_lenders_table.sql (filename: V3__create_loans_lenders_table.sql)
-2026-03-13T23:06:39.025+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V6__create_fraud_alerts_table.sql (filename: V6__create_fraud_alerts_table.sql)
-2026-03-13T23:06:39.025+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V2__create_financial_profiles_table.sql (filename: V2__create_financial_profiles_table.sql)
-2026-03-13T23:06:39.025+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V4__create_credit_cards_table.sql (filename: V4__create_credit_cards_table.sql)
-2026-03-13T23:06:39.025+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V7__seed_lenders_data.sql (filename: V7__seed_lenders_data.sql)
-2026-03-13T23:06:39.025+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V1__create_users_table.sql (filename: V1__create_users_table.sql)
-2026-03-13T23:06:39.025+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V5__create_financial_health_scores_table.sql (filename: V5__create_financial_health_scores_table.sql)
-2026-03-13T23:06:39.025+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V8__seed_credit_cards_data.sql (filename: V8__seed_credit_cards_data.sql)
-2026-03-13T23:06:39.025+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V3__create_loans_lenders_table.sql (filename: V3__create_loans_lenders_table.sql)
-2026-03-13T23:06:39.033+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V6__create_fraud_alerts_table.sql (filename: V6__create_fraud_alerts_table.sql)
-2026-03-13T23:06:39.033+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V2__create_financial_profiles_table.sql (filename: V2__create_financial_profiles_table.sql)
-2026-03-13T23:06:39.066+05:30  INFO 16500 --- [fintrix-api] [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.054s)
-2026-03-13T23:06:39.070+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] o.f.core.internal.command.DbSchemas      : Skipping creation of existing schema: "public"
-2026-03-13T23:06:39.084+05:30  INFO 16500 --- [fintrix-api] [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 8
-2026-03-13T23:06:39.089+05:30  INFO 16500 --- [fintrix-api] [restartedMain] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
-2026-03-13T23:06:39.093+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] org.flywaydb.core.FlywayExecutor         : Memory usage: 37 of 92M
-2026-03-13T23:06:39.208+05:30  INFO 16500 --- [fintrix-api] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-03-13T23:06:39.283+05:30  INFO 16500 --- [fintrix-api] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
-2026-03-13T23:06:39.327+05:30  INFO 16500 --- [fintrix-api] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-03-13T23:06:39.598+05:30  INFO 16500 --- [fintrix-api] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-03-13T23:06:39.678+05:30  WARN 16500 --- [fintrix-api] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-03-13T23:06:40.922+05:30  INFO 16500 --- [fintrix-api] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-03-13T23:06:40.991+05:30  INFO 16500 --- [fintrix-api] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-03-13T23:06:41.275+05:30  INFO 16500 --- [fintrix-api] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-03-13T23:06:41.776+05:30 DEBUG 16500 --- [fintrix-api] [restartedMain] c.f.security.JwtAuthenticationFilter     : Filter 'jwtAuthenticationFilter' configured for use
-2026-03-13T23:06:42.898+05:30  WARN 16500 --- [fintrix-api] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-03-13T23:06:43.410+05:30  INFO 16500 --- [fintrix-api] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoint(s) beneath base path '/actuator'
-2026-03-13T23:06:43.562+05:30  INFO 16500 --- [fintrix-api] [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@e58e8ea, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1911e865, org.springframework.security.web.context.SecurityContextHolderFilter@5f8286af, org.springframework.security.web.header.HeaderWriterFilter@47f4743, org.springframework.web.filter.CorsFilter@bba0a7b, org.springframework.security.web.authentication.logout.LogoutFilter@fcdc223, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@20566ada, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@7af715b6, com.fintrix.security.JwtAuthenticationFilter@c857e62, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1d88a2f6, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@4aa5755a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5afd8ddb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@33abe9c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@373cb5c, org.springframework.security.web.session.SessionManagementFilter@218dc4f0, org.springframework.security.web.access.ExceptionTranslationFilter@4ce06396, org.springframework.security.web.access.intercept.AuthorizationFilter@338940fa]
-2026-03-13T23:06:44.272+05:30  INFO 16500 --- [fintrix-api] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
-2026-03-13T23:06:44.291+05:30  INFO 16500 --- [fintrix-api] [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
-2026-03-13T23:06:44.291+05:30  INFO 16500 --- [fintrix-api] [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
-2026-03-13T23:06:44.291+05:30  INFO 16500 --- [fintrix-api] [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
-2026-03-13T23:06:44.297+05:30  INFO 16500 --- [fintrix-api] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+2026-03-14T18:51:43.782+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Scanning URL: file:/E:/Fintrix/fintrix-api/target/classes/db/migration
+2026-03-14T18:51:43.797+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] i.s.c.FileSystemClassPathLocationScanner : Scanning starting at classpath root in filesystem: E:\Fintrix\fintrix-api\target\classes\
+2026-03-14T18:51:43.797+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] i.s.c.FileSystemClassPathLocationScanner : Scanning for resources in path: E:\Fintrix\fintrix-api\target\classes\db\migration (db/migration)
+2026-03-14T18:51:43.801+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Found resource: db/migration/V1__create_users_table.sql
+2026-03-14T18:51:43.801+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Found resource: db/migration/V2__create_financial_profiles_table.sql
+2026-03-14T18:51:43.802+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Found resource: db/migration/V3__create_loans_lenders_table.sql
+2026-03-14T18:51:43.802+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Found resource: db/migration/V4__create_credit_cards_table.sql
+2026-03-14T18:51:43.802+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Found resource: db/migration/V5__create_financial_health_scores_table.sql
+2026-03-14T18:51:43.803+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Found resource: db/migration/V6__create_fraud_alerts_table.sql
+2026-03-14T18:51:43.803+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Found resource: db/migration/V7__seed_lenders_data.sql
+2026-03-14T18:51:43.803+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Found resource: db/migration/V8__seed_credit_cards_data.sql
+2026-03-14T18:51:43.803+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.s.classpath.ClassPathScanner     : Scanning for classes at classpath:db/migration
+2026-03-14T18:51:43.809+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.resource.ResourceNameValidator   : Validating V4__create_credit_cards_table.sql
+2026-03-14T18:51:43.810+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.resource.ResourceNameValidator   : Validating V7__seed_lenders_data.sql
+2026-03-14T18:51:43.811+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.resource.ResourceNameValidator   : Validating V1__create_users_table.sql
+2026-03-14T18:51:43.812+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.resource.ResourceNameValidator   : Validating V5__create_financial_health_scores_table.sql
+2026-03-14T18:51:43.815+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.resource.ResourceNameValidator   : Validating V8__seed_credit_cards_data.sql
+2026-03-14T18:51:43.816+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.resource.ResourceNameValidator   : Validating V3__create_loans_lenders_table.sql
+2026-03-14T18:51:43.817+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.resource.ResourceNameValidator   : Validating V6__create_fraud_alerts_table.sql
+2026-03-14T18:51:43.817+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.resource.ResourceNameValidator   : Validating V2__create_financial_profiles_table.sql
+2026-03-14T18:51:43.830+05:30  INFO 20768 --- [fintrix-api] [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/fintrix_dev (PostgreSQL 18.1)
+2026-03-14T18:51:43.831+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] org.flywaydb.core.FlywayExecutor         : Driver: PostgreSQL JDBC Driver 42.6.2
+2026-03-14T18:51:43.831+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] org.flywaydb.core.FlywayExecutor         : DDL Transactions Supported: true
+2026-03-14T18:51:43.831+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.s.SchemaHistoryFactory           : Schemas: 
+2026-03-14T18:51:43.831+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.s.SchemaHistoryFactory           : Default schema: null
+2026-03-14T18:51:43.848+05:30  WARN 20768 --- [fintrix-api] [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 18.1 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-03-14T18:51:43.848+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.c.i.c.SqlScriptCallbackFactory       : Scanning for SQL callbacks ...
+2026-03-14T18:51:43.874+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.core.internal.command.DbValidate     : Validating migrations ...
+2026-03-14T18:51:43.910+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V4__create_credit_cards_table.sql (filename: V4__create_credit_cards_table.sql)
+2026-03-14T18:51:43.910+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V7__seed_lenders_data.sql (filename: V7__seed_lenders_data.sql)
+2026-03-14T18:51:43.910+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V1__create_users_table.sql (filename: V1__create_users_table.sql)
+2026-03-14T18:51:43.915+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V5__create_financial_health_scores_table.sql (filename: V5__create_financial_health_scores_table.sql)
+2026-03-14T18:51:43.916+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V8__seed_credit_cards_data.sql (filename: V8__seed_credit_cards_data.sql)
+2026-03-14T18:51:43.916+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V3__create_loans_lenders_table.sql (filename: V3__create_loans_lenders_table.sql)
+2026-03-14T18:51:43.916+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V6__create_fraud_alerts_table.sql (filename: V6__create_fraud_alerts_table.sql)
+2026-03-14T18:51:43.916+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V2__create_financial_profiles_table.sql (filename: V2__create_financial_profiles_table.sql)
+2026-03-14T18:51:43.916+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V4__create_credit_cards_table.sql (filename: V4__create_credit_cards_table.sql)
+2026-03-14T18:51:43.916+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V7__seed_lenders_data.sql (filename: V7__seed_lenders_data.sql)
+2026-03-14T18:51:43.916+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V1__create_users_table.sql (filename: V1__create_users_table.sql)
+2026-03-14T18:51:43.916+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V5__create_financial_health_scores_table.sql (filename: V5__create_financial_health_scores_table.sql)
+2026-03-14T18:51:43.916+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V8__seed_credit_cards_data.sql (filename: V8__seed_credit_cards_data.sql)
+2026-03-14T18:51:43.916+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V3__create_loans_lenders_table.sql (filename: V3__create_loans_lenders_table.sql)
+2026-03-14T18:51:43.916+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V6__create_fraud_alerts_table.sql (filename: V6__create_fraud_alerts_table.sql)
+2026-03-14T18:51:43.916+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.core.internal.scanner.Scanner        : Filtering out resource: db/migration/V2__create_financial_profiles_table.sql (filename: V2__create_financial_profiles_table.sql)
+2026-03-14T18:51:43.964+05:30  INFO 20768 --- [fintrix-api] [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.084s)
+2026-03-14T18:51:43.964+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] o.f.core.internal.command.DbSchemas      : Skipping creation of existing schema: "public"
+2026-03-14T18:51:43.995+05:30  INFO 20768 --- [fintrix-api] [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 8
+2026-03-14T18:51:44.005+05:30  INFO 20768 --- [fintrix-api] [restartedMain] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-03-14T18:51:44.015+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] org.flywaydb.core.FlywayExecutor         : Memory usage: 39 of 90M
+2026-03-14T18:51:44.283+05:30  INFO 20768 --- [fintrix-api] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-14T18:51:44.516+05:30  INFO 20768 --- [fintrix-api] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-03-14T18:51:44.710+05:30  INFO 20768 --- [fintrix-api] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-14T18:51:45.532+05:30  INFO 20768 --- [fintrix-api] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-14T18:51:45.706+05:30  WARN 20768 --- [fintrix-api] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-14T18:51:48.565+05:30  INFO 20768 --- [fintrix-api] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-14T18:51:48.691+05:30  INFO 20768 --- [fintrix-api] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-14T18:51:49.382+05:30  INFO 20768 --- [fintrix-api] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-14T18:51:50.506+05:30 DEBUG 20768 --- [fintrix-api] [restartedMain] c.f.security.JwtAuthenticationFilter     : Filter 'jwtAuthenticationFilter' configured for use
+2026-03-14T18:51:52.799+05:30  WARN 20768 --- [fintrix-api] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-14T18:51:53.832+05:30  INFO 20768 --- [fintrix-api] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoint(s) beneath base path '/actuator'
+2026-03-14T18:51:54.185+05:30  INFO 20768 --- [fintrix-api] [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6a9f7803, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6369c2d3, org.springframework.security.web.context.SecurityContextHolderFilter@1e9853d2, org.springframework.security.web.header.HeaderWriterFilter@13ed5a87, org.springframework.web.filter.CorsFilter@32f266a1, org.springframework.security.web.authentication.logout.LogoutFilter@5b788ae9, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@14f2c7a0, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@148906a7, com.fintrix.security.JwtAuthenticationFilter@7ab0ea6c, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@5502cd76, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@2e73e3bb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6aa7c030, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1ba3295b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3fbdc916, org.springframework.security.web.session.SessionManagementFilter@524b9461, org.springframework.security.web.access.ExceptionTranslationFilter@5e7954c3, org.springframework.security.web.access.intercept.AuthorizationFilter@1d88a2f6]
+2026-03-14T18:51:55.697+05:30  INFO 20768 --- [fintrix-api] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2026-03-14T18:51:55.724+05:30  INFO 20768 --- [fintrix-api] [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2026-03-14T18:51:55.731+05:30  INFO 20768 --- [fintrix-api] [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2026-03-14T18:51:55.731+05:30  INFO 20768 --- [fintrix-api] [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2026-03-14T18:51:55.731+05:30  INFO 20768 --- [fintrix-api] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
   Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
   NOT STARTED.
   Currently in standby mode.
@@ -114,11 +114,901 @@ org.springframework.boot.devtools.restart.classloader.RestartClassLoader@665c4f3
   Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
   Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
 
-2026-03-13T23:06:44.297+05:30  INFO 16500 --- [fintrix-api] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
-2026-03-13T23:06:44.297+05:30  INFO 16500 --- [fintrix-api] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
-2026-03-13T23:06:44.298+05:30  INFO 16500 --- [fintrix-api] [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@63345b22
-2026-03-13T23:06:44.429+05:30  INFO 16500 --- [fintrix-api] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2026-03-13T23:06:44.515+05:30  INFO 16500 --- [fintrix-api] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
-2026-03-13T23:06:44.516+05:30  INFO 16500 --- [fintrix-api] [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
-2026-03-13T23:06:44.516+05:30  INFO 16500 --- [fintrix-api] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
-2026-03-13T23:06:44.550+05:30  INFO 16500 --- [fintrix-api] [restartedMain] com.fintrix.FintrixApplication           : Started FintrixApplication in 9.923 seconds (process running for 10.402)
+2026-03-14T18:51:55.736+05:30  INFO 20768 --- [fintrix-api] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2026-03-14T18:51:55.736+05:30  INFO 20768 --- [fintrix-api] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2026-03-14T18:51:55.736+05:30  INFO 20768 --- [fintrix-api] [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@4dd497d9
+2026-03-14T18:51:56.065+05:30  INFO 20768 --- [fintrix-api] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-03-14T18:51:56.315+05:30  INFO 20768 --- [fintrix-api] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-03-14T18:51:56.315+05:30  INFO 20768 --- [fintrix-api] [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2026-03-14T18:51:56.315+05:30  INFO 20768 --- [fintrix-api] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2026-03-14T18:51:56.381+05:30  INFO 20768 --- [fintrix-api] [restartedMain] com.fintrix.FintrixApplication           : Started FintrixApplication in 17.414 seconds (process running for 17.814)
+2026-03-14T18:51:56.647+05:30  INFO 20768 --- [fintrix-api] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-14T18:51:56.647+05:30  INFO 20768 --- [fintrix-api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-14T18:51:56.664+05:30  INFO 20768 --- [fintrix-api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 17 ms
+2026-03-14T18:51:56.714+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /oauth2/authorization/google
+2026-03-14T18:51:56.846+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-1] o.s.s.web.DefaultRedirectStrategy        : Redirecting to https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=460779659460-k54qlv3epdj2u1k4f8n6mjlklel7rut5.apps.googleusercontent.com&scope=email%20profile&state=HmVnr3qYxmrAyGMZkjrV7cFIV3GlUAAMjfIB7DsAiWM%3D&redirect_uri=http://localhost:8080/login/oauth2/code/google
+2026-03-14T18:52:01.654+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /login/oauth2/code/google?state=HmVnr3qYxmrAyGMZkjrV7cFIV3GlUAAMjfIB7DsAiWM%3D&iss=https%3A%2F%2Faccounts.google.com&code=4%2F0AfrIepBDq3BeoCW14a0pNQ64U70XrC7NgcGHr7fEKI_W3qdt_GcBRkmM365fijNo3pjGQA&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=6&prompt=none
+2026-03-14T18:52:03.006+05:30  INFO 20768 --- [fintrix-api] [http-nio-8080-exec-2] com.fintrix.security.OAuth2UserService   : Google OAuth login attempt for email: investmentanalysisindia@gmail.com
+2026-03-14T18:52:03.193+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.age,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.google_id,
+        u1_0.is_active,
+        u1_0.is_profile_complete,
+        u1_0.phone_number,
+        u1_0.profile_picture_url,
+        u1_0.role,
+        u1_0.state,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.google_id=?
+2026-03-14T18:52:03.342+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    update
+        users 
+    set
+        age=?,
+        city=?,
+        email=?,
+        full_name=?,
+        google_id=?,
+        is_active=?,
+        is_profile_complete=?,
+        phone_number=?,
+        profile_picture_url=?,
+        role=?,
+        state=?,
+        updated_at=? 
+    where
+        id=?
+2026-03-14T18:52:03.374+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-2] .s.ChangeSessionIdAuthenticationStrategy : Changed session id from FDB85A4FACEDC335D74F6A5CAE9871F8
+2026-03-14T18:52:03.376+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-2] .s.o.c.w.OAuth2LoginAuthenticationFilter : Set SecurityContextHolder to OAuth2AuthenticationToken [Principal=com.fintrix.security.UserPrincipal@671c7974, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=FDB85A4FACEDC335D74F6A5CAE9871F8], Granted Authorities=[ROLE_USER]]
+2026-03-14T18:52:03.464+05:30  INFO 20768 --- [fintrix-api] [http-nio-8080-exec-2] c.f.s.OAuth2AuthenticationSuccessHandler : JWT issued for user: investmentanalysisindia@gmail.com
+2026-03-14T18:52:03.465+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-2] o.s.s.web.DefaultRedirectStrategy        : Redirecting to http://localhost:5173/oauth2/callback?token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3ZjcxYWZhZi03MDk5LTQzN2YtOTRmMy00NWQzMWMzMWMwZTMiLCJpYXQiOjE3NzM0OTQ1MjMsImV4cCI6MTc3MzU4MDkyM30.AXvoGNd_6uewI2q2x3LuE78k4Iq4pmBvNFydqLGTH9Q
+2026-03-14T18:52:03.700+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/users/me
+2026-03-14T18:52:03.701+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/users/me
+2026-03-14T18:52:03.700+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/users/me
+2026-03-14T18:52:03.701+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/users/me
+2026-03-14T18:52:03.742+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/users/me
+2026-03-14T18:52:03.749+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/users/me
+2026-03-14T18:52:03.743+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/users/me
+2026-03-14T18:52:03.753+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/users/me
+2026-03-14T18:52:03.839+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.age,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.google_id,
+        u1_0.is_active,
+        u1_0.is_profile_complete,
+        u1_0.phone_number,
+        u1_0.profile_picture_url,
+        u1_0.role,
+        u1_0.state,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-14T18:52:03.838+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.age,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.google_id,
+        u1_0.is_active,
+        u1_0.is_profile_complete,
+        u1_0.phone_number,
+        u1_0.profile_picture_url,
+        u1_0.role,
+        u1_0.state,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-14T18:52:03.849+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-10] c.f.security.JwtAuthenticationFilter     : Authenticated user: 7f71afaf-7099-437f-94f3-45d31c31c0e3 for URI: /api/v1/users/me
+2026-03-14T18:52:03.850+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] c.f.security.JwtAuthenticationFilter     : Authenticated user: 7f71afaf-7099-437f-94f3-45d31c31c0e3 for URI: /api/v1/users/me
+2026-03-14T18:52:03.851+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.age,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.google_id,
+        u1_0.is_active,
+        u1_0.is_profile_complete,
+        u1_0.phone_number,
+        u1_0.profile_picture_url,
+        u1_0.role,
+        u1_0.state,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-14T18:52:03.849+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.age,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.google_id,
+        u1_0.is_active,
+        u1_0.is_profile_complete,
+        u1_0.phone_number,
+        u1_0.profile_picture_url,
+        u1_0.role,
+        u1_0.state,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-14T18:52:03.857+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-9] c.f.security.JwtAuthenticationFilter     : Authenticated user: 7f71afaf-7099-437f-94f3-45d31c31c0e3 for URI: /api/v1/users/me
+2026-03-14T18:52:03.858+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] c.f.security.JwtAuthenticationFilter     : Authenticated user: 7f71afaf-7099-437f-94f3-45d31c31c0e3 for URI: /api/v1/users/me
+2026-03-14T18:52:03.871+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/users/me
+2026-03-14T18:52:03.871+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/users/me
+2026-03-14T18:52:03.871+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/users/me
+2026-03-14T18:52:03.871+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/users/me
+2026-03-14T18:52:03.909+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-10] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.fintrix.modules.user.controller.UserController.getMyProfile(com.fintrix.security.UserPrincipal); target is of class [com.fintrix.modules.user.controller.UserController]
+2026-03-14T18:52:03.909+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-9] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.fintrix.modules.user.controller.UserController.getMyProfile(com.fintrix.security.UserPrincipal); target is of class [com.fintrix.modules.user.controller.UserController]
+2026-03-14T18:52:03.909+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.fintrix.modules.user.controller.UserController.getMyProfile(com.fintrix.security.UserPrincipal); target is of class [com.fintrix.modules.user.controller.UserController]
+2026-03-14T18:52:03.909+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.fintrix.modules.user.controller.UserController.getMyProfile(com.fintrix.security.UserPrincipal); target is of class [com.fintrix.modules.user.controller.UserController]
+2026-03-14T18:52:04.032+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.fintrix.modules.user.controller.UserController.getMyProfile(com.fintrix.security.UserPrincipal); target is of class [com.fintrix.modules.user.controller.UserController]
+2026-03-14T18:52:04.034+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] c.f.m.user.controller.UserController     : GET /me called by userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:04.033+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.fintrix.modules.user.controller.UserController.getMyProfile(com.fintrix.security.UserPrincipal); target is of class [com.fintrix.modules.user.controller.UserController]
+2026-03-14T18:52:04.032+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-9] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.fintrix.modules.user.controller.UserController.getMyProfile(com.fintrix.security.UserPrincipal); target is of class [com.fintrix.modules.user.controller.UserController]
+2026-03-14T18:52:04.036+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-9] c.f.m.user.controller.UserController     : GET /me called by userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:04.035+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] c.f.m.user.controller.UserController     : GET /me called by userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:04.032+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-10] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.fintrix.modules.user.controller.UserController.getMyProfile(com.fintrix.security.UserPrincipal); target is of class [com.fintrix.modules.user.controller.UserController]
+2026-03-14T18:52:04.036+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-10] c.f.m.user.controller.UserController     : GET /me called by userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:04.920+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-9] c.f.m.user.service.UserServiceImpl       : Fetching profile for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:04.920+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] c.f.m.user.service.UserServiceImpl       : Fetching profile for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:04.920+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] c.f.m.user.service.UserServiceImpl       : Fetching profile for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:04.920+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-10] c.f.m.user.service.UserServiceImpl       : Fetching profile for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:04.921+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.age,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.google_id,
+        u1_0.is_active,
+        u1_0.is_profile_complete,
+        u1_0.phone_number,
+        u1_0.profile_picture_url,
+        u1_0.role,
+        u1_0.state,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-14T18:52:04.922+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.age,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.google_id,
+        u1_0.is_active,
+        u1_0.is_profile_complete,
+        u1_0.phone_number,
+        u1_0.profile_picture_url,
+        u1_0.role,
+        u1_0.state,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-14T18:52:04.924+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.age,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.google_id,
+        u1_0.is_active,
+        u1_0.is_profile_complete,
+        u1_0.phone_number,
+        u1_0.profile_picture_url,
+        u1_0.role,
+        u1_0.state,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-14T18:52:04.924+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.age,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.google_id,
+        u1_0.is_active,
+        u1_0.is_profile_complete,
+        u1_0.phone_number,
+        u1_0.profile_picture_url,
+        u1_0.role,
+        u1_0.state,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-14T18:52:05.632+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/bff/dashboard
+2026-03-14T18:52:05.630+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/bff/dashboard
+2026-03-14T18:52:05.640+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/bff/dashboard
+2026-03-14T18:52:05.640+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/bff/dashboard
+2026-03-14T18:52:05.657+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.age,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.google_id,
+        u1_0.is_active,
+        u1_0.is_profile_complete,
+        u1_0.phone_number,
+        u1_0.profile_picture_url,
+        u1_0.role,
+        u1_0.state,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-14T18:52:05.658+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.age,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.google_id,
+        u1_0.is_active,
+        u1_0.is_profile_complete,
+        u1_0.phone_number,
+        u1_0.profile_picture_url,
+        u1_0.role,
+        u1_0.state,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-14T18:52:05.664+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-3] c.f.security.JwtAuthenticationFilter     : Authenticated user: 7f71afaf-7099-437f-94f3-45d31c31c0e3 for URI: /api/v1/bff/dashboard
+2026-03-14T18:52:05.666+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] c.f.security.JwtAuthenticationFilter     : Authenticated user: 7f71afaf-7099-437f-94f3-45d31c31c0e3 for URI: /api/v1/bff/dashboard
+2026-03-14T18:52:05.669+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/bff/dashboard
+2026-03-14T18:52:05.671+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/bff/dashboard
+2026-03-14T18:52:05.674+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.fintrix.modules.bff.controller.DashboardController.getDashboard(com.fintrix.security.UserPrincipal); target is of class [com.fintrix.modules.bff.controller.DashboardController]
+2026-03-14T18:52:05.674+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-3] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.fintrix.modules.bff.controller.DashboardController.getDashboard(com.fintrix.security.UserPrincipal); target is of class [com.fintrix.modules.bff.controller.DashboardController]
+2026-03-14T18:52:05.676+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.fintrix.modules.bff.controller.DashboardController.getDashboard(com.fintrix.security.UserPrincipal); target is of class [com.fintrix.modules.bff.controller.DashboardController]
+2026-03-14T18:52:05.676+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-3] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.fintrix.modules.bff.controller.DashboardController.getDashboard(com.fintrix.security.UserPrincipal); target is of class [com.fintrix.modules.bff.controller.DashboardController]
+2026-03-14T18:52:05.676+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] c.f.m.b.controller.DashboardController   : Dashboard requested by userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:05.676+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-3] c.f.m.b.controller.DashboardController   : Dashboard requested by userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:05.676+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] c.f.m.b.s.DashboardAggregatorService     : Building dashboard for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:05.676+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-3] c.f.m.b.s.DashboardAggregatorService     : Building dashboard for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:05.753+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-3] c.f.m.f.s.FinancialProfileServiceImpl    : Fetching financial profile for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:05.753+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] c.f.m.f.s.FinancialProfileServiceImpl    : Fetching financial profile for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:05.763+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        fp1_0.id,
+        fp1_0.created_at,
+        fp1_0.credit_score,
+        fp1_0.credit_score_range,
+        fp1_0.current_credit_utilization,
+        fp1_0.employer_name,
+        fp1_0.employment_type,
+        fp1_0.existing_emi_total,
+        fp1_0.financial_health_score,
+        fp1_0.foir,
+        fp1_0.monthly_expenses,
+        fp1_0.monthly_income,
+        fp1_0.monthly_savings,
+        fp1_0.number_of_active_loans,
+        fp1_0.number_of_credit_cards,
+        fp1_0.preferred_reward_type,
+        fp1_0.risk_level,
+        fp1_0.top_spending_category,
+        fp1_0.total_credit_limit,
+        fp1_0.updated_at,
+        fp1_0.user_id,
+        fp1_0.years_of_experience 
+    from
+        financial_profiles fp1_0 
+    where
+        fp1_0.user_id=?
+2026-03-14T18:52:05.767+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        fp1_0.id,
+        fp1_0.created_at,
+        fp1_0.credit_score,
+        fp1_0.credit_score_range,
+        fp1_0.current_credit_utilization,
+        fp1_0.employer_name,
+        fp1_0.employment_type,
+        fp1_0.existing_emi_total,
+        fp1_0.financial_health_score,
+        fp1_0.foir,
+        fp1_0.monthly_expenses,
+        fp1_0.monthly_income,
+        fp1_0.monthly_savings,
+        fp1_0.number_of_active_loans,
+        fp1_0.number_of_credit_cards,
+        fp1_0.preferred_reward_type,
+        fp1_0.risk_level,
+        fp1_0.top_spending_category,
+        fp1_0.total_credit_limit,
+        fp1_0.updated_at,
+        fp1_0.user_id,
+        fp1_0.years_of_experience 
+    from
+        financial_profiles fp1_0 
+    where
+        fp1_0.user_id=?
+2026-03-14T18:52:05.826+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] c.f.m.b.s.DashboardAggregatorService     : No health score yet for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:05.827+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-3] c.f.m.b.s.DashboardAggregatorService     : No health score yet for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:09.024+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/financial-health/compute
+2026-03-14T18:52:09.045+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /api/v1/financial-health/compute
+2026-03-14T18:52:09.075+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.age,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.google_id,
+        u1_0.is_active,
+        u1_0.is_profile_complete,
+        u1_0.phone_number,
+        u1_0.profile_picture_url,
+        u1_0.role,
+        u1_0.state,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-14T18:52:09.091+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-5] c.f.security.JwtAuthenticationFilter     : Authenticated user: 7f71afaf-7099-437f-94f3-45d31c31c0e3 for URI: /api/v1/financial-health/compute
+2026-03-14T18:52:09.092+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /api/v1/financial-health/compute
+2026-03-14T18:52:09.095+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-5] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.fintrix.modules.decisionengine.controller.FinancialHealthController.computeScore(com.fintrix.security.UserPrincipal); target is of class [com.fintrix.modules.decisionengine.controller.FinancialHealthController]
+2026-03-14T18:52:09.098+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-5] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.fintrix.modules.decisionengine.controller.FinancialHealthController.computeScore(com.fintrix.security.UserPrincipal); target is of class [com.fintrix.modules.decisionengine.controller.FinancialHealthController]
+2026-03-14T18:52:09.098+05:30  INFO 20768 --- [fintrix-api] [http-nio-8080-exec-5] c.f.m.d.c.FinancialHealthController      : Manual score compute triggered by userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:09.100+05:30  INFO 20768 --- [fintrix-api] [http-nio-8080-exec-5] c.f.m.d.s.FinancialHealthServiceImpl     : Computing financial health score for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:09.104+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        fp1_0.id,
+        fp1_0.created_at,
+        fp1_0.credit_score,
+        fp1_0.credit_score_range,
+        fp1_0.current_credit_utilization,
+        fp1_0.employer_name,
+        fp1_0.employment_type,
+        fp1_0.existing_emi_total,
+        fp1_0.financial_health_score,
+        fp1_0.foir,
+        fp1_0.monthly_expenses,
+        fp1_0.monthly_income,
+        fp1_0.monthly_savings,
+        fp1_0.number_of_active_loans,
+        fp1_0.number_of_credit_cards,
+        fp1_0.preferred_reward_type,
+        fp1_0.risk_level,
+        fp1_0.top_spending_category,
+        fp1_0.total_credit_limit,
+        fp1_0.updated_at,
+        fp1_0.user_id,
+        fp1_0.years_of_experience 
+    from
+        financial_profiles fp1_0 
+    where
+        fp1_0.user_id=?
+2026-03-14T18:52:09.110+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-5] c.f.m.d.scoring.ScoreCalculator          : Calculating financial health score for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:09.116+05:30  INFO 20768 --- [fintrix-api] [http-nio-8080-exec-5] c.f.m.d.scoring.ScoreCalculator          : Score calculated for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3 ? score: 59 risk: MEDIUM
+2026-03-14T18:52:09.160+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    update
+        financial_health_scores 
+    set
+        is_latest=false 
+    where
+        user_id=?
+2026-03-14T18:52:09.230+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    update
+        financial_profiles 
+    set
+        foir=?,
+        financial_health_score=?,
+        risk_level=? 
+    where
+        user_id=?
+2026-03-14T18:52:09.258+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    insert 
+    into
+        financial_health_scores
+        (created_at, credit_score_component, credit_utilization_score, debt_burden_score, foir_at_scoring, improvement_tips, is_latest, overall_score, risk_level, risk_warnings, savings_rate_at_scoring, savings_rate_score, scored_on, updated_at, user_id, utilization_at_scoring, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-03-14T18:52:09.264+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        fhs1_0.id,
+        fhs1_0.created_at,
+        fhs1_0.credit_score_component,
+        fhs1_0.credit_utilization_score,
+        fhs1_0.debt_burden_score,
+        fhs1_0.foir_at_scoring,
+        fhs1_0.improvement_tips,
+        fhs1_0.is_latest,
+        fhs1_0.overall_score,
+        fhs1_0.risk_level,
+        fhs1_0.risk_warnings,
+        fhs1_0.savings_rate_at_scoring,
+        fhs1_0.savings_rate_score,
+        fhs1_0.scored_on,
+        fhs1_0.updated_at,
+        fhs1_0.user_id,
+        fhs1_0.utilization_at_scoring 
+    from
+        financial_health_scores fhs1_0 
+    where
+        fhs1_0.user_id=? 
+    order by
+        fhs1_0.scored_on desc 
+    fetch
+        first ? rows only
+2026-03-14T18:52:13.287+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/credit-cards/recommendations
+2026-03-14T18:52:13.287+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/credit-cards/recommendations
+2026-03-14T18:52:13.300+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /api/v1/credit-cards/recommendations
+2026-03-14T18:52:13.300+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /api/v1/credit-cards/recommendations
+2026-03-14T18:52:13.316+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.age,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.google_id,
+        u1_0.is_active,
+        u1_0.is_profile_complete,
+        u1_0.phone_number,
+        u1_0.profile_picture_url,
+        u1_0.role,
+        u1_0.state,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-14T18:52:13.317+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.age,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.google_id,
+        u1_0.is_active,
+        u1_0.is_profile_complete,
+        u1_0.phone_number,
+        u1_0.profile_picture_url,
+        u1_0.role,
+        u1_0.state,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-14T18:52:13.323+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] c.f.security.JwtAuthenticationFilter     : Authenticated user: 7f71afaf-7099-437f-94f3-45d31c31c0e3 for URI: /api/v1/credit-cards/recommendations
+2026-03-14T18:52:13.325+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /api/v1/credit-cards/recommendations
+2026-03-14T18:52:13.325+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] c.f.security.JwtAuthenticationFilter     : Authenticated user: 7f71afaf-7099-437f-94f3-45d31c31c0e3 for URI: /api/v1/credit-cards/recommendations
+2026-03-14T18:52:13.331+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /api/v1/credit-cards/recommendations
+2026-03-14T18:52:13.365+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.fintrix.modules.creditcard.controller.CreditCardController.getRecommendations(com.fintrix.security.UserPrincipal,com.fintrix.modules.creditcard.dto.CardRecommendationRequest); target is of class [com.fintrix.modules.creditcard.controller.CreditCardController]
+2026-03-14T18:52:13.366+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.fintrix.modules.creditcard.controller.CreditCardController.getRecommendations(com.fintrix.security.UserPrincipal,com.fintrix.modules.creditcard.dto.CardRecommendationRequest); target is of class [com.fintrix.modules.creditcard.controller.CreditCardController]
+2026-03-14T18:52:13.368+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.fintrix.modules.creditcard.controller.CreditCardController.getRecommendations(com.fintrix.security.UserPrincipal,com.fintrix.modules.creditcard.dto.CardRecommendationRequest); target is of class [com.fintrix.modules.creditcard.controller.CreditCardController]
+2026-03-14T18:52:13.368+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.fintrix.modules.creditcard.controller.CreditCardController.getRecommendations(com.fintrix.security.UserPrincipal,com.fintrix.modules.creditcard.dto.CardRecommendationRequest); target is of class [com.fintrix.modules.creditcard.controller.CreditCardController]
+2026-03-14T18:52:13.368+05:30  INFO 20768 --- [fintrix-api] [http-nio-8080-exec-7] c.f.m.c.controller.CreditCardController  : Card recommendations for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:13.369+05:30  INFO 20768 --- [fintrix-api] [http-nio-8080-exec-8] c.f.m.c.controller.CreditCardController  : Card recommendations for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:13.373+05:30  INFO 20768 --- [fintrix-api] [http-nio-8080-exec-7] .c.s.CreditCardRecommendationServiceImpl : Card recommendations requested for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:13.373+05:30  INFO 20768 --- [fintrix-api] [http-nio-8080-exec-8] .c.s.CreditCardRecommendationServiceImpl : Card recommendations requested for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:13.384+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        fp1_0.id,
+        fp1_0.created_at,
+        fp1_0.credit_score,
+        fp1_0.credit_score_range,
+        fp1_0.current_credit_utilization,
+        fp1_0.employer_name,
+        fp1_0.employment_type,
+        fp1_0.existing_emi_total,
+        fp1_0.financial_health_score,
+        fp1_0.foir,
+        fp1_0.monthly_expenses,
+        fp1_0.monthly_income,
+        fp1_0.monthly_savings,
+        fp1_0.number_of_active_loans,
+        fp1_0.number_of_credit_cards,
+        fp1_0.preferred_reward_type,
+        fp1_0.risk_level,
+        fp1_0.top_spending_category,
+        fp1_0.total_credit_limit,
+        fp1_0.updated_at,
+        fp1_0.user_id,
+        fp1_0.years_of_experience 
+    from
+        financial_profiles fp1_0 
+    where
+        fp1_0.user_id=?
+2026-03-14T18:52:13.385+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        fp1_0.id,
+        fp1_0.created_at,
+        fp1_0.credit_score,
+        fp1_0.credit_score_range,
+        fp1_0.current_credit_utilization,
+        fp1_0.employer_name,
+        fp1_0.employment_type,
+        fp1_0.existing_emi_total,
+        fp1_0.financial_health_score,
+        fp1_0.foir,
+        fp1_0.monthly_expenses,
+        fp1_0.monthly_income,
+        fp1_0.monthly_savings,
+        fp1_0.number_of_active_loans,
+        fp1_0.number_of_credit_cards,
+        fp1_0.preferred_reward_type,
+        fp1_0.risk_level,
+        fp1_0.top_spending_category,
+        fp1_0.total_credit_limit,
+        fp1_0.updated_at,
+        fp1_0.user_id,
+        fp1_0.years_of_experience 
+    from
+        financial_profiles fp1_0 
+    where
+        fp1_0.user_id=?
+2026-03-14T18:52:13.420+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        cc1_0.id,
+        cc1_0.allowed_employment_types,
+        cc1_0.annual_fee,
+        cc1_0.annual_fee_waiver_condition,
+        cc1_0.bank_name,
+        cc1_0.card_category,
+        cc1_0.card_name,
+        cc1_0.created_at,
+        cc1_0.is_active,
+        cc1_0.joining_fee,
+        cc1_0.key_benefits,
+        cc1_0.logo_url,
+        cc1_0.max_age,
+        cc1_0.min_age,
+        cc1_0.min_credit_score,
+        cc1_0.min_monthly_income,
+        cc1_0.reward_rate,
+        cc1_0.reward_type,
+        cc1_0.updated_at,
+        cc1_0.welcome_benefit 
+    from
+        credit_cards cc1_0 
+    where
+        cc1_0.is_active=true 
+        and cc1_0.min_credit_score<=? 
+        and cc1_0.min_monthly_income<=? 
+        and cc1_0.min_age<=? 
+        and cc1_0.max_age>=? 
+    order by
+        cc1_0.min_credit_score desc
+2026-03-14T18:52:13.420+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        cc1_0.id,
+        cc1_0.allowed_employment_types,
+        cc1_0.annual_fee,
+        cc1_0.annual_fee_waiver_condition,
+        cc1_0.bank_name,
+        cc1_0.card_category,
+        cc1_0.card_name,
+        cc1_0.created_at,
+        cc1_0.is_active,
+        cc1_0.joining_fee,
+        cc1_0.key_benefits,
+        cc1_0.logo_url,
+        cc1_0.max_age,
+        cc1_0.min_age,
+        cc1_0.min_credit_score,
+        cc1_0.min_monthly_income,
+        cc1_0.reward_rate,
+        cc1_0.reward_type,
+        cc1_0.updated_at,
+        cc1_0.welcome_benefit 
+    from
+        credit_cards cc1_0 
+    where
+        cc1_0.is_active=true 
+        and cc1_0.min_credit_score<=? 
+        and cc1_0.min_monthly_income<=? 
+        and cc1_0.min_age<=? 
+        and cc1_0.max_age>=? 
+    order by
+        cc1_0.min_credit_score desc
+2026-03-14T18:52:13.473+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        cc1_0.id,
+        cc1_0.allowed_employment_types,
+        cc1_0.annual_fee,
+        cc1_0.annual_fee_waiver_condition,
+        cc1_0.bank_name,
+        cc1_0.card_category,
+        cc1_0.card_name,
+        cc1_0.created_at,
+        cc1_0.is_active,
+        cc1_0.joining_fee,
+        cc1_0.key_benefits,
+        cc1_0.logo_url,
+        cc1_0.max_age,
+        cc1_0.min_age,
+        cc1_0.min_credit_score,
+        cc1_0.min_monthly_income,
+        cc1_0.reward_rate,
+        cc1_0.reward_type,
+        cc1_0.updated_at,
+        cc1_0.welcome_benefit 
+    from
+        credit_cards cc1_0
+2026-03-14T18:52:13.474+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        cc1_0.id,
+        cc1_0.allowed_employment_types,
+        cc1_0.annual_fee,
+        cc1_0.annual_fee_waiver_condition,
+        cc1_0.bank_name,
+        cc1_0.card_category,
+        cc1_0.card_name,
+        cc1_0.created_at,
+        cc1_0.is_active,
+        cc1_0.joining_fee,
+        cc1_0.key_benefits,
+        cc1_0.logo_url,
+        cc1_0.max_age,
+        cc1_0.min_age,
+        cc1_0.min_credit_score,
+        cc1_0.min_monthly_income,
+        cc1_0.reward_rate,
+        cc1_0.reward_type,
+        cc1_0.updated_at,
+        cc1_0.welcome_benefit 
+    from
+        credit_cards cc1_0
+2026-03-14T18:52:13.483+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] c.f.m.c.rules.CardRecommendationEngine   : Evaluating card: HDFC Bank Millennia Credit Card for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:13.501+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] c.f.m.c.rules.CardRecommendationEngine   : Evaluating card: ICICI Bank Amazon Pay ICICI Card for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:13.502+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] c.f.m.c.rules.CardRecommendationEngine   : Evaluating card: Axis Bank Flipkart Axis Bank Card for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:13.503+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] c.f.m.c.rules.CardRecommendationEngine   : Evaluating card: SBI SimplyCLICK SBI Card for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:13.502+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] c.f.m.c.rules.CardRecommendationEngine   : Evaluating card: HDFC Bank Millennia Credit Card for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:13.504+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] c.f.m.c.rules.CardRecommendationEngine   : Evaluating card: ICICI Bank Amazon Pay ICICI Card for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:13.504+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] c.f.m.c.rules.CardRecommendationEngine   : Evaluating card: SBI BPCL Octane SBI Card for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:13.505+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] c.f.m.c.rules.CardRecommendationEngine   : Evaluating card: Axis Bank Flipkart Axis Bank Card for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:13.505+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] c.f.m.c.rules.CardRecommendationEngine   : Evaluating card: SBI SimplyCLICK SBI Card for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:13.506+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] c.f.m.c.rules.CardRecommendationEngine   : Evaluating card: ICICI Bank Coral Credit Card for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:13.506+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] c.f.m.c.rules.CardRecommendationEngine   : Evaluating card: HDFC Bank MoneyBack+ Credit Card for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:13.507+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] c.f.m.c.rules.CardRecommendationEngine   : Evaluating card: SBI BPCL Octane SBI Card for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:13.507+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-7] c.f.m.c.rules.CardRecommendationEngine   : Evaluating card: Kotak Kotak 811 #DreamDifferent for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:13.510+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] c.f.m.c.rules.CardRecommendationEngine   : Evaluating card: ICICI Bank Coral Credit Card for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:13.511+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] c.f.m.c.rules.CardRecommendationEngine   : Evaluating card: HDFC Bank MoneyBack+ Credit Card for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:13.514+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-8] c.f.m.c.rules.CardRecommendationEngine   : Evaluating card: Kotak Kotak 811 #DreamDifferent for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:40.975+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/loans/check-eligibility
+2026-03-14T18:52:40.988+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /api/v1/loans/check-eligibility
+2026-03-14T18:52:41.025+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.age,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.google_id,
+        u1_0.is_active,
+        u1_0.is_profile_complete,
+        u1_0.phone_number,
+        u1_0.profile_picture_url,
+        u1_0.role,
+        u1_0.state,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-14T18:52:41.032+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-1] c.f.security.JwtAuthenticationFilter     : Authenticated user: 7f71afaf-7099-437f-94f3-45d31c31c0e3 for URI: /api/v1/loans/check-eligibility
+2026-03-14T18:52:41.042+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /api/v1/loans/check-eligibility
+2026-03-14T18:52:41.217+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-1] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.fintrix.modules.loan.controller.LoanController.checkEligibility(com.fintrix.security.UserPrincipal,com.fintrix.modules.loan.dto.LoanEligibilityRequest); target is of class [com.fintrix.modules.loan.controller.LoanController]
+2026-03-14T18:52:41.217+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-1] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.fintrix.modules.loan.controller.LoanController.checkEligibility(com.fintrix.security.UserPrincipal,com.fintrix.modules.loan.dto.LoanEligibilityRequest); target is of class [com.fintrix.modules.loan.controller.LoanController]
+2026-03-14T18:52:41.217+05:30  INFO 20768 --- [fintrix-api] [http-nio-8080-exec-1] c.f.m.loan.controller.LoanController     : Loan eligibility check — userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3 type: PERSONAL_LOAN amount: 500000
+2026-03-14T18:52:41.225+05:30  INFO 20768 --- [fintrix-api] [http-nio-8080-exec-1] c.f.m.l.s.LoanEligibilityServiceImpl     : Checking loan eligibility for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3 loanType: PERSONAL_LOAN
+2026-03-14T18:52:41.242+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        fp1_0.id,
+        fp1_0.created_at,
+        fp1_0.credit_score,
+        fp1_0.credit_score_range,
+        fp1_0.current_credit_utilization,
+        fp1_0.employer_name,
+        fp1_0.employment_type,
+        fp1_0.existing_emi_total,
+        fp1_0.financial_health_score,
+        fp1_0.foir,
+        fp1_0.monthly_expenses,
+        fp1_0.monthly_income,
+        fp1_0.monthly_savings,
+        fp1_0.number_of_active_loans,
+        fp1_0.number_of_credit_cards,
+        fp1_0.preferred_reward_type,
+        fp1_0.risk_level,
+        fp1_0.top_spending_category,
+        fp1_0.total_credit_limit,
+        fp1_0.updated_at,
+        fp1_0.user_id,
+        fp1_0.years_of_experience 
+    from
+        financial_profiles fp1_0 
+    where
+        fp1_0.user_id=?
+2026-03-14T18:52:41.253+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.allowed_employment_types,
+        l1_0.created_at,
+        l1_0.is_active,
+        l1_0.loan_type,
+        l1_0.logo_url,
+        l1_0.max_age,
+        l1_0.max_foir,
+        l1_0.max_interest_rate,
+        l1_0.max_loan_amount,
+        l1_0.min_age,
+        l1_0.min_credit_score,
+        l1_0.min_employment_years,
+        l1_0.min_interest_rate,
+        l1_0.min_loan_amount,
+        l1_0.min_monthly_income,
+        l1_0.name,
+        l1_0.processing_fee_percent,
+        l1_0.updated_at 
+    from
+        lenders l1_0 
+    where
+        l1_0.loan_type=? 
+        and l1_0.is_active=true 
+        and l1_0.min_credit_score<=? 
+        and l1_0.min_monthly_income<=? 
+        and l1_0.min_age<=? 
+        and l1_0.max_age>=? 
+        and l1_0.min_loan_amount<=? 
+        and l1_0.max_loan_amount>=? 
+    order by
+        l1_0.min_interest_rate
+2026-03-14T18:52:41.336+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-1] c.f.m.l.s.LoanEligibilityServiceImpl     : Found 2 candidate lenders after DB filter
+2026-03-14T18:52:41.336+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-1] c.f.modules.loan.rules.LoanRuleEngine    : Evaluating lender: Bajaj Finance for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:41.342+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-1] c.f.modules.loan.rules.LoanRuleEngine    : Evaluating lender: SBI for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:58.855+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /api/v1/loans/check-eligibility
+2026-03-14T18:52:58.869+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.age,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.google_id,
+        u1_0.is_active,
+        u1_0.is_profile_complete,
+        u1_0.phone_number,
+        u1_0.profile_picture_url,
+        u1_0.role,
+        u1_0.state,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-14T18:52:58.874+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] c.f.security.JwtAuthenticationFilter     : Authenticated user: 7f71afaf-7099-437f-94f3-45d31c31c0e3 for URI: /api/v1/loans/check-eligibility
+2026-03-14T18:52:58.874+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /api/v1/loans/check-eligibility
+2026-03-14T18:52:58.874+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.fintrix.modules.loan.controller.LoanController.checkEligibility(com.fintrix.security.UserPrincipal,com.fintrix.modules.loan.dto.LoanEligibilityRequest); target is of class [com.fintrix.modules.loan.controller.LoanController]
+2026-03-14T18:52:58.874+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.fintrix.modules.loan.controller.LoanController.checkEligibility(com.fintrix.security.UserPrincipal,com.fintrix.modules.loan.dto.LoanEligibilityRequest); target is of class [com.fintrix.modules.loan.controller.LoanController]
+2026-03-14T18:52:58.874+05:30  INFO 20768 --- [fintrix-api] [http-nio-8080-exec-4] c.f.m.loan.controller.LoanController     : Loan eligibility check — userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3 type: PERSONAL_LOAN amount: 50000
+2026-03-14T18:52:58.884+05:30  INFO 20768 --- [fintrix-api] [http-nio-8080-exec-4] c.f.m.l.s.LoanEligibilityServiceImpl     : Checking loan eligibility for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3 loanType: PERSONAL_LOAN
+2026-03-14T18:52:58.891+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        fp1_0.id,
+        fp1_0.created_at,
+        fp1_0.credit_score,
+        fp1_0.credit_score_range,
+        fp1_0.current_credit_utilization,
+        fp1_0.employer_name,
+        fp1_0.employment_type,
+        fp1_0.existing_emi_total,
+        fp1_0.financial_health_score,
+        fp1_0.foir,
+        fp1_0.monthly_expenses,
+        fp1_0.monthly_income,
+        fp1_0.monthly_savings,
+        fp1_0.number_of_active_loans,
+        fp1_0.number_of_credit_cards,
+        fp1_0.preferred_reward_type,
+        fp1_0.risk_level,
+        fp1_0.top_spending_category,
+        fp1_0.total_credit_limit,
+        fp1_0.updated_at,
+        fp1_0.user_id,
+        fp1_0.years_of_experience 
+    from
+        financial_profiles fp1_0 
+    where
+        fp1_0.user_id=?
+2026-03-14T18:52:58.900+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.allowed_employment_types,
+        l1_0.created_at,
+        l1_0.is_active,
+        l1_0.loan_type,
+        l1_0.logo_url,
+        l1_0.max_age,
+        l1_0.max_foir,
+        l1_0.max_interest_rate,
+        l1_0.max_loan_amount,
+        l1_0.min_age,
+        l1_0.min_credit_score,
+        l1_0.min_employment_years,
+        l1_0.min_interest_rate,
+        l1_0.min_loan_amount,
+        l1_0.min_monthly_income,
+        l1_0.name,
+        l1_0.processing_fee_percent,
+        l1_0.updated_at 
+    from
+        lenders l1_0 
+    where
+        l1_0.loan_type=? 
+        and l1_0.is_active=true 
+        and l1_0.min_credit_score<=? 
+        and l1_0.min_monthly_income<=? 
+        and l1_0.min_age<=? 
+        and l1_0.max_age>=? 
+        and l1_0.min_loan_amount<=? 
+        and l1_0.max_loan_amount>=? 
+    order by
+        l1_0.min_interest_rate
+2026-03-14T18:52:58.911+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] c.f.m.l.s.LoanEligibilityServiceImpl     : Found 2 candidate lenders after DB filter
+2026-03-14T18:52:58.911+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] c.f.modules.loan.rules.LoanRuleEngine    : Evaluating lender: Bajaj Finance for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3
+2026-03-14T18:52:58.911+05:30 DEBUG 20768 --- [fintrix-api] [http-nio-8080-exec-4] c.f.modules.loan.rules.LoanRuleEngine    : Evaluating lender: SBI for userId: 7f71afaf-7099-437f-94f3-45d31c31c0e3

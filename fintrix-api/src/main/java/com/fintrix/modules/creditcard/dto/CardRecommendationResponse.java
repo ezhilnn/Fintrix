@@ -1,17 +1,22 @@
-// ────────────────────────────────────────────────────────────────
 package com.fintrix.modules.creditcard.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Builder
 public class CardRecommendationResponse {
-    private List<CardResult> recommendedCards;   // eligible, best match first
-    private List<CardResult> otherEligibleCards; // eligible but not top match
-    private List<CardResult> futureCards;        // not yet eligible — shows goal
-    private String           overallTip;
-    private String           multipleCardWarning;
+
+    private List<CardResult> recommendedCards;
+    private List<CardResult> otherEligibleCards;
+    private List<CardResult> futureCards;
+    private String overallTip;
+    private String multipleCardWarning;
+
 }

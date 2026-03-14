@@ -8,9 +8,10 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useDashboardStore from '../store/dashboardStore';
 import { ROUTES } from '../utils/constants';
-import { formatCurrency, formatPercent } from '../utils/formatters';
+import { formatCurrency, formatPercent, formatDate } from '../utils/formatters';
 import { getHealthScoreBand, riskLevelColor } from '../utils/scoreHelpers';
 import type { RiskLevel } from '../types/financialProfile.types';
+import type { ScoreTrend } from '../types/api.types';
 import './DashboardPage.css';
 
 // ── SVG ring progress ──────────────────────────────────────────
@@ -52,7 +53,97 @@ const SubScoreBar = ({ label, value }: { label: string; value: number }) => {
   );
 };
 
-// ── Quick action cards ─────────────────────────────────────────
+// ── Score trend SVG sparkline ──────────────────────────────────
+const ScoreTrendChart = ({ trends }: { trends: ScoreTrend[] }) => {
+  if (!trends || trends.length === 0) {
+    return (
+      <div className="dashboard-page__trend-empty">
+        Score history will appear after your first weekly recalculation
+      </div>
+    );
+  }
+
+  const W = 400, H = 120, PAD = 16;
+  const min = Math.max(0,  Math.min(...trends.map(t => t.score)) - 10);
+  const max = Math.min(100, Math.max(...trends.map(t => t.score)) + 10);
+  const xs = trends.map((_, i) => PAD + (i / Math.max(trends.length - 1, 1)) * (W - PAD * 2));
+  const ys = trends.map(t  => H - PAD - ((t.score - min) / (max - min || 1)) * (H - PAD * 2));
+
+  const linePath = xs.map((x, i) => `${i === 0 ? 'M' : 'L'}${x.toFixed(1)},${ys[i].toFixed(1)}`).join(' ');
+  const areaPath = `${linePath} L${xs[xs.length-1].toFixed(1)},${(H-PAD).toFixed(1)} L${xs[0].toFixed(1)},${(H-PAD).toFixed(1)} Z`;
+
+  const latest = trends[trends.length - 1];
+  const prev   = trends.length > 1 ? trends[trends.length - 2] : null;
+  const delta  = prev ? latest.score - prev.score : 0;
+
+  return (
+    <div className="dashboard-page__trend-chart">
+      <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
+        <defs>
+          <linearGradient id="trendGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stopColor="var(--color-brand-primary)" stopOpacity="0.18" />
+            <stop offset="100%" stopColor="var(--color-brand-primary)" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        {/* Area fill */}
+        <path d={areaPath} fill="url(#trendGrad)" />
+        {/* Line */}
+        <path d={linePath} fill="none" stroke="var(--color-brand-primary)" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
+        {/* Dots */}
+        {xs.map((x, i) => (
+          <circle key={i} cx={x} cy={ys[i]} r="3" fill="var(--color-brand-primary)" />
+        ))}
+        {/* Score labels on first + last */}
+        {[0, trends.length - 1].map(i => (
+          <text
+            key={i}
+            x={xs[i]}
+            y={ys[i] - 8}
+            textAnchor="middle"
+            fontSize="10"
+            fill="var(--color-text-muted)"
+          >
+            {trends[i].score}
+          </text>
+        ))}
+      </svg>
+      {delta !== 0 && (
+        <div style={{
+          position: 'absolute', bottom: 0, right: 0,
+          fontSize: 'var(--text-xs)', fontFamily: 'var(--font-mono)',
+          color: delta > 0 ? 'var(--color-success)' : 'var(--color-danger)',
+          fontWeight: 'var(--font-semibold)',
+        }}>
+          {delta > 0 ? '▲' : '▼'} {Math.abs(delta)} pts
+        </div>
+      )}
+    </div>
+  );
+};
+
+// ── Raw health metrics row ─────────────────────────────────────
+const RawMetricsRow = ({ health }: { health: { foir: number; creditScore?: number; creditScoreRange?: string; creditUtilization: number; savingsRate: number } }) => (
+  <div className="dashboard-page__raw-metrics">
+    <div className="dashboard-page__raw-metric">
+      <span className="dashboard-page__raw-metric-label">FOIR</span>
+      <span className="dashboard-page__raw-metric-value">{formatPercent(health.foir)}</span>
+    </div>
+    <div className="dashboard-page__raw-metric">
+      <span className="dashboard-page__raw-metric-label">CIBIL</span>
+      <span className="dashboard-page__raw-metric-value">{health.creditScore ?? '—'}</span>
+    </div>
+    <div className="dashboard-page__raw-metric">
+      <span className="dashboard-page__raw-metric-label">Utilization</span>
+      <span className="dashboard-page__raw-metric-value">{formatPercent(health.creditUtilization)}</span>
+    </div>
+    <div className="dashboard-page__raw-metric">
+      <span className="dashboard-page__raw-metric-label">Savings Rate</span>
+      <span className="dashboard-page__raw-metric-value">{formatPercent(health.savingsRate)}</span>
+    </div>
+  </div>
+);
+
+
 const QUICK_ACTIONS = [
   { icon: '🏦', title: 'Check Loan Eligibility', desc: 'See which lenders will approve you', route: ROUTES.LOAN },
   { icon: '💳', title: 'Credit Card Match',       desc: 'Find cards suited to your profile',  route: ROUTES.CREDIT_CARD },
@@ -135,6 +226,21 @@ const DashboardPage = () => {
         </div>
       )}
 
+      {/* ── First-score celebration ─────────────────────── */}
+      {health?.isFirstScore && (
+        <div className="dashboard-page__first-score">
+          <span className="dashboard-page__first-score-icon">🎉</span>
+          <div className="dashboard-page__first-score-text">
+            <span className="dashboard-page__first-score-title">
+              Your first financial health score is ready!
+            </span>
+            <span className="dashboard-page__first-score-sub">
+              We'll recalculate it weekly and track your progress over time.
+            </span>
+          </div>
+        </div>
+      )}
+
       {/* ── Quick actions row ──────────────────────────── */}
       <div className="dashboard-page__grid">
         <div className="dashboard-page__actions-row">
@@ -193,6 +299,11 @@ const DashboardPage = () => {
                 ? <><span className="spinner" /> Refreshing…</>
                 : '↻ Refresh Score'}
             </button>
+
+            {/* Raw metric values from FinancialHealthResponse */}
+            {health && (
+              <RawMetricsRow health={health} />
+            )}
           </div>
 
           {/* Key stats */}
@@ -276,6 +387,21 @@ const DashboardPage = () => {
                   </div>
                 ))}
               </div>
+            </div>
+          )}
+
+          {/* Score trend chart */}
+          {health && (
+            <div className="dashboard-page__trend-card">
+              <div className="dashboard-page__trend-header">
+                <span className="dashboard-page__trend-title">Score History</span>
+                {health.scoredOn && (
+                  <span className="dashboard-page__trend-meta">
+                    Last updated {formatDate(health.scoredOn)}
+                  </span>
+                )}
+              </div>
+              <ScoreTrendChart trends={health.scoreTrend} />
             </div>
           )}
         </div>

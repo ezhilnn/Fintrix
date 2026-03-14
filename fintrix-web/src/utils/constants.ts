@@ -46,15 +46,16 @@ export const API = {
 
 // ── Frontend routes ──────────────────────────────────────────────
 export const ROUTES = {
-  LOGIN:             '/login',
-  OAUTH_CALLBACK:    '/oauth2/callback',
-  DASHBOARD:         '/dashboard',
-  USER_PROFILE:      '/profile',
-  FINANCIAL_PROFILE: '/financial-profile',
-  LOAN:              '/loan',
-  CREDIT_CARD:       '/credit-card',
-  FRAUD_CHECK:       '/fraud-check',
-  NOT_FOUND:         '*',
+  LOGIN:                '/login',
+  OAUTH_CALLBACK:       '/oauth2/callback',
+  DASHBOARD:            '/dashboard',
+  USER_PROFILE:         '/profile',
+  FINANCIAL_PROFILE:    '/financial-profile',
+  LOAN:                 '/loan',
+  CREDIT_CARD:          '/credit-card',
+  FRAUD_CHECK:          '/fraud-check',
+  ACCOUNT_DEACTIVATED:  '/account-deactivated',
+  NOT_FOUND:            '*',
 } as const;
 
 // ── EmploymentType labels — matches EmploymentType.java ──────────

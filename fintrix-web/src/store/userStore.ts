@@ -83,6 +83,9 @@ const useUserStore = create<UserState>((set) => ({
       // Logout clears token + user from localStorage
       useAuthStore.getState().logout();
       set({ isDeactivating: false });
+      // Fire event so AppRouter (or any listener) can navigate
+      // to the /account-deactivated confirmation page
+      window.dispatchEvent(new CustomEvent('fintrix:account-deactivated'));
       onSuccess?.();
     } catch (err) {
       const apiErr = err as ApiError;

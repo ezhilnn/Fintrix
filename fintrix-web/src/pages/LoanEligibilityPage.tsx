@@ -4,8 +4,8 @@
 //
 // LoanEligibilityRequest:
 //   loanType        @NotNull  LoanType enum
-//   requestedAmount @DecimalMin("10000")
-//   tenureMonths    @Min(1) @Max(360)
+//   requestedAmount @DecimalMin("10000") @DecimalMax("100000000")
+//   tenureMonths    @Min(3) @Max(360)
 //   purpose         optional string
 // ================================================================
 
@@ -33,6 +33,14 @@ const LenderCard = ({ lender }: { lender: LenderResult }) => (
       : 'loan-page__lender-card--ineligible'
   }`}>
     <div className="loan-page__lender-header">
+      {lender.logoUrl && (
+        <img
+          src={lender.logoUrl}
+          alt={lender.lenderName}
+          style={{ height: 26, width: 'auto', objectFit: 'contain', borderRadius: 4, flexShrink: 0 }}
+          onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }}
+        />
+      )}
       <span className="loan-page__lender-name">{lender.lenderName}</span>
       <span className={`loan-page__approval-pill ${approvalPillClass(lender.approvalProbability)}`}>
         {lender.approvalProbability}% approval
@@ -285,6 +293,36 @@ const LoanEligibilityPage = () => {
                 <span className="badge badge-danger">
                   {result.ineligibleLenders.length} Not Eligible
                 </span>
+              </div>
+
+              {/* User profile snapshot used for this check */}
+              <div className="loan-page__snapshot">
+                <div className="loan-page__snapshot-item">
+                  <span className="loan-page__snapshot-label">Your FOIR</span>
+                  <span className="loan-page__snapshot-value">
+                    {formatPercent(result.userFoir)}
+                  </span>
+                </div>
+                <div className="loan-page__snapshot-item">
+                  <span className="loan-page__snapshot-label">CIBIL Score</span>
+                  <span className="loan-page__snapshot-value">
+                    {result.userCreditScore
+                      ? `${result.userCreditScore} ${result.userCreditScoreRange ? `(${result.userCreditScoreRange})` : ''}`
+                      : 'Not set'}
+                  </span>
+                </div>
+                <div className="loan-page__snapshot-item">
+                  <span className="loan-page__snapshot-label">Monthly Income</span>
+                  <span className="loan-page__snapshot-value">
+                    {formatCurrency(result.userMonthlyIncome, true)}
+                  </span>
+                </div>
+                <div className="loan-page__snapshot-item">
+                  <span className="loan-page__snapshot-label">Loan Requested</span>
+                  <span className="loan-page__snapshot-value">
+                    {formatCurrency(result.requestedAmount, true)}
+                  </span>
+                </div>
               </div>
 
               {/* Overall suggestion */}
