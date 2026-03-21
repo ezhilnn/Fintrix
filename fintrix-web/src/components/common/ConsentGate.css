@@ -1,0 +1,132 @@
+/* ================================================================
+   ConsentGate.css
+   BEM root: .consent-gate
+   Full-screen blocking modal — shown when DATA_PROCESSING = false.
+   User cannot dismiss; must grant consent to proceed.
+================================================================ */
+
+@import '../../styles/variables.css';
+
+.consent-gate {
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal);
+  padding: var(--space-4);
+  animation: cgFadeIn 0.3s ease both;
+}
+
+@keyframes cgFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.consent-gate__card {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8) var(--space-8);
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  animation: cgSlideUp 0.35s ease both;
+}
+
+@keyframes cgSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.consent-gate__logo {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: var(--color-text-primary);
+  letter-spacing: var(--tracking-snug);
+}
+
+.consent-gate__logo span {
+  color: var(--color-brand-primary);
+}
+
+.consent-gate__title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: var(--color-text-primary);
+  letter-spacing: var(--tracking-snug);
+}
+
+.consent-gate__body {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  font-weight: var(--font-light);
+  line-height: var(--leading-normal);
+}
+
+.consent-gate__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.consent-gate__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-bg-input);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.consent-gate__item-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.consent-gate__item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.consent-gate__item-label {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-primary);
+}
+
+.consent-gate__item-desc {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-weight: var(--font-light);
+  line-height: var(--leading-normal);
+}
+
+.consent-gate__divider {
+  height: 1px;
+  background: var(--color-border-subtle);
+}
+
+.consent-gate__legal {
+  font-size: var(--text-xs);
+  color: var(--color-text-disabled);
+  line-height: var(--leading-normal);
+}
+
+.consent-gate__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.consent-gate__error {
+  font-size: var(--text-sm);
+  color: var(--color-danger);
+  text-align: center;
+}

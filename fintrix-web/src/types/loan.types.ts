@@ -28,6 +28,7 @@ export interface LenderResult {
   lenderId: string;
   lenderName: string;
   logoUrl?: string;
+  applyUrl?: string;             // direct "Apply Now" link to bank's application page
 
   approvalProbability: number;   // 0–100
   isEligible: boolean;           // true if >= 60%

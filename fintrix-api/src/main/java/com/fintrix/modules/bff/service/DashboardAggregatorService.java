@@ -1,9 +1,6 @@
-
-// ================================================================
-// FILE 2: DashboardAggregatorService.java
-// ================================================================
 package com.fintrix.modules.bff.service;
 
+import com.fintrix.modules.bff.dto.DashboardFinancialMetrics;
 import com.fintrix.modules.bff.dto.DashboardResponse;
 import com.fintrix.modules.decisionengine.dto.FinancialHealthResponse;
 import com.fintrix.modules.decisionengine.service.FinancialHealthService;
@@ -15,29 +12,21 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-/**
- * DashboardAggregatorService
- *
- * Calls multiple module services and combines into one response.
- * Each service call is independent — if one fails, we handle gracefully.
- */
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class DashboardAggregatorService {
 
-    private final UserService            userService;
+    private final UserService             userService;
     private final FinancialProfileService profileService;
     private final FinancialHealthService  healthService;
+    private final FinancialMetricsBuilder metricsBuilder;
 
     public DashboardResponse buildDashboard(String userId) {
         log.debug("Building dashboard for userId: {}", userId);
 
-        // ── Load user profile ─────────────────────────────────
-        UserProfileResponse userProfile =
-                userService.getMyProfile(userId);
+        UserProfileResponse userProfile = userService.getMyProfile(userId);
 
-        // ── Load financial profile (may not exist yet) ────────
         FinancialProfileResponse financialProfile = null;
         boolean financialProfileComplete = false;
         try {
@@ -48,57 +37,60 @@ public class DashboardAggregatorService {
             log.debug("No financial profile for userId: {}", userId);
         }
 
-        // ── Load health score (only if financial profile exists) ─
         FinancialHealthResponse healthScore = null;
         if (financialProfileComplete) {
             try {
                 healthScore = healthService.getLatestScore(userId);
             } catch (Exception e) {
-                // Score not computed yet — not an error
                 log.debug("No health score yet for userId: {}", userId);
             }
         }
 
-        // ── Determine next action prompt ──────────────────────
-        String nextAction = determineNextAction(
-                userProfile, financialProfile, healthScore);
+        // Pass userId so builder can query emi_trackers,
+        // notifications, audit_logs, affiliate_clicks
+        DashboardFinancialMetrics metrics =
+                metricsBuilder.build(financialProfile, healthScore, userId);
 
         return DashboardResponse.builder()
                 .userProfile(userProfile)
                 .financialProfile(financialProfile)
                 .healthScore(healthScore)
+                .financialMetrics(metrics)
                 .isProfileComplete(userProfile.getIsProfileComplete())
                 .isFinancialProfileComplete(financialProfileComplete)
-                .nextActionPrompt(nextAction)
+                .nextActionPrompt(determineNextAction(
+                        userProfile, financialProfile, healthScore, metrics))
                 .build();
     }
 
     private String determineNextAction(
-            UserProfileResponse user,
+            UserProfileResponse      userProfile,
             FinancialProfileResponse fp,
-            FinancialHealthResponse hs) {
+            FinancialHealthResponse  hs,
+            DashboardFinancialMetrics metrics) {
 
-        if (!Boolean.TRUE.equals(user.getIsProfileComplete()))
-            return "Complete your basic profile to get personalised " +
-                   "financial recommendations";
+        if (!Boolean.TRUE.equals(userProfile.getIsProfileComplete()))
+            return "Complete your basic profile to get personalised recommendations";
 
         if (fp == null)
-            return "Set up your financial profile to check loan " +
-                   "eligibility and get credit card recommendations";
+            return "Set up your financial profile to unlock all features";
 
         if (!Boolean.TRUE.equals(fp.getIsComplete()))
-            return "Add your credit score and EMI details " +
-                   "for complete financial health analysis";
+            return "Add your credit score and EMI details for complete analysis";
 
         if (hs == null)
-            return "Calculate your Financial Health Score to see " +
-                   "personalised improvement tips";
+            return "Compute your Financial Health Score to see improvement tips";
+
+        if (metrics != null && metrics.getAlerts() != null
+                && !metrics.getAlerts().isEmpty()) {
+            var top = metrics.getAlerts().get(0);
+            if ("DANGER".equals(top.getSeverity()))
+                return "⚠️ " + top.getTitle() + " — " + top.getAction();
+        }
 
         if (hs.getOverallScore() < 50)
-            return "Your financial health needs attention. " +
-                   "Check your improvement tips below";
+            return "Your financial health needs attention — check tips below";
 
-        return "Your finances look healthy! Check loan eligibility " +
-               "or explore credit card recommendations";
+        return "Your finances look healthy! Explore loan or card options";
     }
 }

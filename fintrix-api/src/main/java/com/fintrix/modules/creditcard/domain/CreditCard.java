@@ -1,9 +1,3 @@
-
-
-// ================================================================
-// FILE: CreditCard.java
-// com/fintrix/modules/creditcard/domain/CreditCard.java
-// ================================================================
 package com.fintrix.modules.creditcard.domain;
 
 import com.fintrix.infrastructure.persistence.AuditableEntity;
@@ -11,10 +5,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
 
-/**
- * CreditCard represents a bank's credit card product with eligibility criteria.
- * Populated via Flyway seed data (V8 migration).
- */
 @Entity
 @Table(name = "credit_cards")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
@@ -33,6 +23,29 @@ public class CreditCard extends AuditableEntity {
     @Column(name = "logo_url", length = 300)
     private String logoUrl;
 
+    // "Apply Now" button destination — direct link to bank's card application page
+    @Column(name = "apply_url", length = 500)
+    private String applyUrl;
+
+    // Added in V2 schema enhancement
+    @Column(name = "card_network", length = 30)
+    private String cardNetwork;                  // Visa, Mastercard, Amex, RuPay
+
+    @Column(name = "interest_rate", precision = 5, scale = 2)
+    @Builder.Default
+    private BigDecimal interestRate = new BigDecimal("42.00");
+
+    @Column(name = "fuel_surcharge_waiver", nullable = false)
+    @Builder.Default
+    private Boolean fuelSurchargeWaiver = false;
+
+    @Column(name = "international_usage", nullable = false)
+    @Builder.Default
+    private Boolean internationalUsage = true;
+
+    @Column(name = "lounge_access", length = 100)
+    private String loungeAccess;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "card_category", nullable = false)
     private CardCategory cardCategory;
@@ -41,7 +54,6 @@ public class CreditCard extends AuditableEntity {
     @Column(name = "reward_type", nullable = false)
     private RewardType rewardType;
 
-    // ── Eligibility Criteria ─────────────────────────────────
     @Column(name = "min_credit_score", nullable = false)
     private Integer minCreditScore;
 
@@ -57,7 +69,6 @@ public class CreditCard extends AuditableEntity {
     @Column(name = "allowed_employment_types", length = 200)
     private String allowedEmploymentTypes;
 
-    // ── Fees ─────────────────────────────────────────────────
     @Column(name = "joining_fee", precision = 10, scale = 2)
     @Builder.Default
     private BigDecimal joiningFee = BigDecimal.ZERO;
@@ -67,20 +78,18 @@ public class CreditCard extends AuditableEntity {
     private BigDecimal annualFee = BigDecimal.ZERO;
 
     @Column(name = "annual_fee_waiver_condition", length = 300)
-    private String annualFeeWaiverCondition;       // "Spend ₹1.5L in a year"
+    private String annualFeeWaiverCondition;
 
-    // ── Rewards ──────────────────────────────────────────────
     @Column(name = "reward_rate", length = 200)
-    private String rewardRate;                     // "1.5% cashback on all spends"
+    private String rewardRate;
 
     @Column(name = "welcome_benefit", length = 300)
     private String welcomeBenefit;
 
     @Column(name = "key_benefits", length = 1000)
-    private String keyBenefits;                    // JSON string of benefit list
+    private String keyBenefits;
 
     @Column(name = "is_active", nullable = false)
     @Builder.Default
     private Boolean isActive = true;
 }
-

@@ -2,3 +2,7 @@
 .idea/
 target/
 *.log
+# TLS certificates - never commit
+src/main/resources/keystore/
+*.p12
+*.jks

@@ -1,50 +1,56 @@
 // ================================================================
-// AppRouter.tsx
+// AppRouter.tsx  — v2 update
 //
-// Public routes:  /login, /oauth2/callback
-// Protected routes: wrapped in ProtectedRoute + AppLayout
-//
-// Onboarding routes (/profile, /financial-profile) get AppLayout
-// but ProtectedRoute won't block them even if profile incomplete.
+// New additions:
+//   - ConsentGate wraps all protected content (DATA_PROCESSING gate)
+//   - Notification polling started on app boot
+//   - Consent init called after auth resolves
+//   - 5 new user routes: EMI, Notifications, Consent
+//   - Admin routes under /admin/* (nested, guarded by AdminLayout)
 // ================================================================
 
 import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { useEffect, lazy, Suspense } from 'react';
 
-import ProtectedRoute from '../components/common/ProtectedRoute';
+import ProtectedRoute  from '../components/common/ProtectedRoute';
 import AppLayout from '../components/common/AppLayout';
-import useAuthStore   from '../store/authStore';
-import { ROUTES }     from '../utils/constants';
+import ConsentGate     from '../components/common/ConsentGate';
+import useAuthStore    from '../store/authStore';
+import useConsentStore from '../store/consentStore';
+import useNotificationStore from '../store/notificationStore';
+import { ROUTES }      from '../utils/constants';
 
-// Public — eager (tiny, always needed immediately)
-import LoginPage            from '../pages/LoginPage';
-import OAuthCallbackPage    from '../pages/OAuthCallbackPage';
+// ── Public pages — eager ─────────────────────────────────────────
+import LoginPage              from '../pages/LoginPage';
+import OAuthCallbackPage      from '../pages/OAuthCallbackPage';
 import AccountDeactivatedPage from '../pages/AccountDeactivatedPage';
 
-// Protected — lazy loaded for code splitting
+// ── Protected pages — lazy ───────────────────────────────────────
 const DashboardPage        = lazy(() => import('../pages/DashboardPage'));
 const UserProfilePage      = lazy(() => import('../pages/UserProfilePage'));
 const FinancialProfilePage = lazy(() => import('../pages/FinancialProfilePage'));
 const LoanEligibilityPage  = lazy(() => import('../pages/LoanEligibilityPage'));
 const CreditCardPage       = lazy(() => import('../pages/CreditCardPage'));
 const FraudCheckPage       = lazy(() => import('../pages/FraudCheckPage'));
+const EmiTrackerPage       = lazy(() => import('../pages/EmiTrackerPage'));
+const NotificationsPage    = lazy(() => import('../pages/NotificationsPage'));
+const ConsentPage          = lazy(() => import('../pages/ConsentPage'));
 
-// Full-screen spinner while lazy chunks load
+// ── Admin pages — lazy ───────────────────────────────────────────
+const AdminLayout         = lazy(() => import('../pages/admin/AdminLayout'));
+const AdminDashboardPage  = lazy(() => import('../pages/admin/AdminDashboardPage'));
+const AdminLendersPage    = lazy(() => import('../pages/admin/AdminLendersPage'));
+const AdminCardsPage      = lazy(() => import('../pages/admin/AdminCardsPage'));
+const AdminFraudPage      = lazy(() => import('../pages/admin/AdminFraudPage'));
+
+// ── Full-screen spinner ──────────────────────────────────────────
 const PageLoader = () => (
   <div className="page-loader">
     <div className="spinner spinner-lg" />
   </div>
 );
 
-// Convenience: ProtectedRoute + AppLayout in one wrapper
-const ProtectedLayout = ({ children }: { children: React.ReactNode }) => (
-  <ProtectedRoute>
-    <AppLayout>{children}</AppLayout>
-  </ProtectedRoute>
-);
-
-// Listens for deactivation event fired by userStore and redirects
-// Must be rendered INSIDE BrowserRouter to use useNavigate
+// ── Deactivation listener ────────────────────────────────────────
 const DeactivationListener = () => {
   const navigate = useNavigate();
   useEffect(() => {
@@ -55,60 +61,99 @@ const DeactivationListener = () => {
   return null;
 };
 
-const AppRouter = () => {
-  const initAuth = useAuthStore(s => s.initAuth);
+// ── ProtectedLayout: auth + app shell + consent gate ────────────
+const ProtectedLayout = ({ children }: { children: React.ReactNode }) => (
+  <ProtectedRoute>
+    <AppLayout>
+      <ConsentGate>
+        {children}
+      </ConsentGate>
+    </AppLayout>
+  </ProtectedRoute>
+);
+
+// ── App boot: init auth, consent, notification polling ───────────
+const AppBoot = () => {
+  const initAuth          = useAuthStore(s => s.initAuth);
+  const isAuthenticated   = useAuthStore(s => s.isAuthenticated);
+  const initConsent       = useConsentStore(s => s.initConsent);
+  const startPolling      = useNotificationStore(s => s.startPolling);
 
   useEffect(() => {
     initAuth();
   }, [initAuth]);
 
-  return (
-    <BrowserRouter>
-      <DeactivationListener />
-      <Suspense fallback={<PageLoader />}>
-        <Routes>
+  // Once authenticated, init consent check + start notification polling
+  useEffect(() => {
+    if (isAuthenticated) {
+      initConsent();
+      const stopPolling = startPolling();
+      return stopPolling;
+    }
+  }, [isAuthenticated, initConsent, startPolling]);
 
-          {/* ── Public routes ────────────────────────────────── */}
-          <Route path={ROUTES.LOGIN}                 element={<LoginPage />} />
-          <Route path={ROUTES.OAUTH_CALLBACK}        element={<OAuthCallbackPage />} />
-          <Route path={ROUTES.ACCOUNT_DEACTIVATED}   element={<AccountDeactivatedPage />} />
-
-          {/* ── Root redirect ─────────────────────────────────── */}
-          <Route path="/" element={<Navigate to={ROUTES.DASHBOARD} replace />} />
-
-          {/* ── Protected + Layout routes ─────────────────────── */}
-          <Route
-            path={ROUTES.DASHBOARD}
-            element={<ProtectedLayout><DashboardPage /></ProtectedLayout>}
-          />
-          <Route
-            path={ROUTES.USER_PROFILE}
-            element={<ProtectedLayout><UserProfilePage /></ProtectedLayout>}
-          />
-          <Route
-            path={ROUTES.FINANCIAL_PROFILE}
-            element={<ProtectedLayout><FinancialProfilePage /></ProtectedLayout>}
-          />
-          <Route
-            path={ROUTES.LOAN}
-            element={<ProtectedLayout><LoanEligibilityPage /></ProtectedLayout>}
-          />
-          <Route
-            path={ROUTES.CREDIT_CARD}
-            element={<ProtectedLayout><CreditCardPage /></ProtectedLayout>}
-          />
-          <Route
-            path={ROUTES.FRAUD_CHECK}
-            element={<ProtectedLayout><FraudCheckPage /></ProtectedLayout>}
-          />
-
-          {/* ── 404 fallback ──────────────────────────────────── */}
-          <Route path="*" element={<Navigate to={ROUTES.DASHBOARD} replace />} />
-
-        </Routes>
-      </Suspense>
-    </BrowserRouter>
-  );
+  return null;
 };
+
+const AppRouter = () => (
+  <BrowserRouter>
+    <AppBoot />
+    <DeactivationListener />
+    <Suspense fallback={<PageLoader />}>
+      <Routes>
+
+        {/* ── Public routes ──────────────────────────────────── */}
+        <Route path={ROUTES.LOGIN}               element={<LoginPage />} />
+        <Route path={ROUTES.OAUTH_CALLBACK}      element={<OAuthCallbackPage />} />
+        <Route path={ROUTES.ACCOUNT_DEACTIVATED} element={<AccountDeactivatedPage />} />
+
+        {/* ── Root redirect ───────────────────────────────────── */}
+        <Route path="/" element={<Navigate to={ROUTES.DASHBOARD} replace />} />
+
+        {/* ── Protected user routes ───────────────────────────── */}
+        <Route path={ROUTES.DASHBOARD}
+          element={<ProtectedLayout><DashboardPage /></ProtectedLayout>} />
+        <Route path={ROUTES.USER_PROFILE}
+          element={<ProtectedLayout><UserProfilePage /></ProtectedLayout>} />
+        <Route path={ROUTES.FINANCIAL_PROFILE}
+          element={<ProtectedLayout><FinancialProfilePage /></ProtectedLayout>} />
+        <Route path={ROUTES.LOAN}
+          element={<ProtectedLayout><LoanEligibilityPage /></ProtectedLayout>} />
+        <Route path={ROUTES.CREDIT_CARD}
+          element={<ProtectedLayout><CreditCardPage /></ProtectedLayout>} />
+        <Route path={ROUTES.FRAUD_CHECK}
+          element={<ProtectedLayout><FraudCheckPage /></ProtectedLayout>} />
+        <Route path={ROUTES.EMI_TRACKER}
+          element={<ProtectedLayout><EmiTrackerPage /></ProtectedLayout>} />
+        <Route path={ROUTES.NOTIFICATIONS}
+          element={<ProtectedLayout><NotificationsPage /></ProtectedLayout>} />
+        <Route path={ROUTES.CONSENT}
+          element={<ProtectedLayout><ConsentPage /></ProtectedLayout>} />
+
+        {/* ── Admin routes (nested, AdminLayout adds role guard + sub-nav) */}
+        <Route
+          path={ROUTES.ADMIN}
+          element={
+            <ProtectedRoute>
+              <AppLayout>
+                <AdminLayout />
+              </AppLayout>
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Navigate to={ROUTES.ADMIN_DASHBOARD} replace />} />
+          <Route path="dashboard" element={<AdminDashboardPage />} />
+          <Route path="lenders"   element={<AdminLendersPage />} />
+          <Route path="cards"     element={<AdminCardsPage />} />
+          <Route path="fraud"     element={<AdminFraudPage />} />
+        </Route>
+
+        {/* ── 404 fallback ────────────────────────────────────── */}
+        <Route path="*" element={<Navigate to={ROUTES.DASHBOARD} replace />} />
+
+      </Routes>
+    </Suspense>
+  </BrowserRouter>
+);
 
 export default AppRouter;

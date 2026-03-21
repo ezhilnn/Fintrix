@@ -1,5 +1,5 @@
 // ================================================================
-// FILE 2: DecisionAuditRepository.java
+// FILE 2: Updated DecisionAuditRepository — add countByDecisionType
 // ================================================================
 package com.fintrix.modules.audit.repository;
 
@@ -18,6 +18,7 @@ public interface DecisionAuditRepository
 
     Page<DecisionAuditLog> findByUserIdAndDecisionTypeOrderByCreatedAtDesc(
             String userId, String decisionType, Pageable pageable);
-}
 
+    long countByDecisionType(String decisionType);
+}
 

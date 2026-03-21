@@ -382,6 +382,127 @@ const FinancialProfilePage = () => {
               </div>
             )}
 
+            {/* Computed fields returned by backend — shown read-only when profile exists */}
+            {profile && (
+              <>
+                {/* Computed metrics row — all backend-computed fields */}
+                {(profile.monthlySavings != null || profile.creditScoreRange || profile.riskLevel || profile.dti != null || profile.numberOfActiveLoans != null) && (
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
+                    gap: 'var(--space-3)',
+                    padding: 'var(--space-4) var(--space-5)',
+                    background: 'var(--color-bg-input)',
+                    border: '1px solid var(--color-border-subtle)',
+                    borderRadius: 'var(--radius-md)',
+                  }}>
+                    {/* Monthly Savings */}
+                    {profile.monthlySavings != null && (
+                      <div>
+                        <p style={{ fontSize: 'var(--text-xs)', fontWeight: 'var(--font-semibold)', letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--color-text-disabled)', marginBottom: 4 }}>Monthly Savings</p>
+                        <p style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-md)', color: Number(profile.monthlySavings) < 0 ? 'var(--color-danger)' : 'var(--color-text-primary)' }}>
+                          ₹{Number(profile.monthlySavings).toLocaleString('en-IN')}
+                        </p>
+                      </div>
+                    )}
+                    {/* FOIR */}
+                    {profile.foir != null && (
+                      <div>
+                        <p style={{ fontSize: 'var(--text-xs)', fontWeight: 'var(--font-semibold)', letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--color-text-disabled)', marginBottom: 4 }}>FOIR</p>
+                        <p style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-md)', color: Number(profile.foir) > 50 ? 'var(--color-danger)' : Number(profile.foir) > 40 ? 'var(--color-warning)' : 'var(--color-brand-primary)' }}>
+                          {Number(profile.foir).toFixed(1)}%
+                        </p>
+                        <p style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-disabled)' }}>Loan EMI / Income</p>
+                      </div>
+                    )}
+                    {/* DTI — new */}
+                    {profile.dti != null && (
+                      <div>
+                        <p style={{ fontSize: 'var(--text-xs)', fontWeight: 'var(--font-semibold)', letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--color-text-disabled)', marginBottom: 4 }}>DTI</p>
+                        <p style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-md)', color: Number(profile.dti) > 50 ? 'var(--color-danger)' : Number(profile.dti) > 43 ? 'var(--color-warning)' : 'var(--color-brand-primary)' }}>
+                          {Number(profile.dti).toFixed(1)}%
+                        </p>
+                        <p style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-disabled)' }}>All obligations / Income</p>
+                      </div>
+                    )}
+                    {/* DTI Range — new */}
+                    {profile.dtiRange && (
+                      <div>
+                        <p style={{ fontSize: 'var(--text-xs)', fontWeight: 'var(--font-semibold)', letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--color-text-disabled)', marginBottom: 4 }}>DTI Range</p>
+                        <span className={`badge ${
+                          profile.dtiRange === 'LOW'      ? 'badge-success' :
+                          profile.dtiRange === 'MODERATE' ? 'badge-warning' :
+                          profile.dtiRange === 'HIGH'     ? 'badge-orange'  :
+                          'badge-danger'
+                        }`}>{profile.dtiRange}</span>
+                      </div>
+                    )}
+                    {/* Credit Score Range */}
+                    {profile.creditScoreRange && (
+                      <div>
+                        <p style={{ fontSize: 'var(--text-xs)', fontWeight: 'var(--font-semibold)', letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--color-text-disabled)', marginBottom: 4 }}>Credit Range</p>
+                        <span className={`badge ${
+                          profile.creditScoreRange === 'EXCELLENT' ? 'badge-success' :
+                          profile.creditScoreRange === 'GOOD'      ? 'badge-brand'   :
+                          profile.creditScoreRange === 'FAIR'      ? 'badge-warning' :
+                          'badge-danger'
+                        }`}>{profile.creditScoreRange}</span>
+                      </div>
+                    )}
+                    {/* Risk Level */}
+                    {profile.riskLevel && (
+                      <div>
+                        <p style={{ fontSize: 'var(--text-xs)', fontWeight: 'var(--font-semibold)', letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--color-text-disabled)', marginBottom: 4 }}>Risk Level</p>
+                        <span className={`badge ${
+                          profile.riskLevel === 'LOW'      ? 'badge-success' :
+                          profile.riskLevel === 'MEDIUM'   ? 'badge-warning' :
+                          profile.riskLevel === 'HIGH'     ? 'badge-orange'  :
+                          'badge-danger'
+                        }`}>{profile.riskLevel}</span>
+                      </div>
+                    )}
+                    {/* Active Loans — new */}
+                    {profile.numberOfActiveLoans != null && (
+                      <div>
+                        <p style={{ fontSize: 'var(--text-xs)', fontWeight: 'var(--font-semibold)', letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--color-text-disabled)', marginBottom: 4 }}>Active Loans</p>
+                        <p style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-md)', color: 'var(--color-text-primary)' }}>
+                          {profile.numberOfActiveLoans}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Profile completion + health score */}
+                <div style={{
+                  display: 'flex', gap: 'var(--space-3)', flexWrap: 'wrap',
+                  padding: 'var(--space-3) var(--space-4)',
+                  background: profile.isComplete
+                    ? 'rgba(16,185,129,0.06)' : 'var(--color-warning-bg)',
+                  border: `1px solid ${profile.isComplete
+                    ? 'var(--color-border-brand)' : 'var(--color-warning-border)'}`,
+                  borderRadius: 'var(--radius-md)',
+                }}>
+                  <span style={{
+                    fontSize: 'var(--text-sm)', fontWeight: 'var(--font-semibold)',
+                    color: profile.isComplete ? 'var(--color-brand-primary)' : 'var(--color-warning)',
+                  }}>
+                    {profile.isComplete ? '✓ Profile complete' : '⚠ Profile incomplete'}
+                  </span>
+                  {profile.financialHealthScore != null && (
+                    <span style={{
+                      fontSize: 'var(--text-sm)', color: 'var(--color-text-muted)',
+                      marginLeft: 'auto',
+                    }}>
+                      Current health score: <strong style={{ color: 'var(--color-text-primary)' }}>
+                        {profile.financialHealthScore}/100
+                      </strong>
+                    </span>
+                  )}
+                </div>
+              </>
+            )}
+
             <div className="fin-profile-page__submit">
               <button
                 type="submit"

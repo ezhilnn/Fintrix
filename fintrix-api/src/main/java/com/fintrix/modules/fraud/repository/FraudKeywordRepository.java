@@ -1,12 +1,9 @@
-// ================================================================
-// FILE 2: FraudKeywordRepository.java
-// ================================================================
 package com.fintrix.modules.fraud.repository;
 
 import com.fintrix.modules.fraud.domain.FraudKeyword;
-import io.lettuce.core.dynamic.annotation.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,10 +12,12 @@ import java.util.List;
 public interface FraudKeywordRepository
         extends JpaRepository<FraudKeyword, String> {
 
-    // Load all active keywords on startup (cached in FraudRuleEngine)
+    // Load all active keywords — used by KeywordScanServiceImpl
+    // for full-text scanning of user-submitted content
     List<FraudKeyword> findByIsActiveTrue();
 
-    // Find matching keywords for a given text (DB-side LIKE matching)
+    // Used by FraudRuleEngine — check if a short entity name
+    // contains any fraud keyword (reverse of the above)
     @Query("SELECT k FROM FraudKeyword k " +
            "WHERE k.isActive = true " +
            "AND LOWER(:text) LIKE LOWER(CONCAT('%', k.keyword, '%'))")

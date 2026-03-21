@@ -51,6 +51,21 @@ spring:
   # ── Cache ───────────────────────────────────────────────────
   cache:
     type: redis
+  fcm:
+    enabled: ${FCM_ENABLED:true}
+    project-id: ${FCM_PROJECT_ID:fintrix-cfe2a}
+
+  consent:
+    current-version: "v1.0"
+    # bump to v1.1 if privacy policy changes — users re-consent on next login
+
+  tracking:
+    enabled: true
+    # Events are written async — never blocks main API
+
+  affiliate:
+    base-commission-cpa: 1500   # ₹1500 default CPA if not set per partner
+    webhook-secret: ${AFFILIATE_WEBHOOK_SECRET:change-this}
 
 # ── App-level JWT config ─────────────────────────────────────
 fintrix:

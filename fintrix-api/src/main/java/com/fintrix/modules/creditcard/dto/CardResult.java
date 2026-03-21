@@ -25,6 +25,7 @@ public class CardResult {
     private String      bankName;
     private String      cardName;
     private String      logoUrl;
+    private String     applyUrl;   
     private CardCategory cardCategory;
     private RewardType   rewardType;
 

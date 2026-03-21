@@ -9,6 +9,8 @@ import lombok.Getter;
 
 import java.math.BigDecimal;
 import java.util.List;
+import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * LenderResult
@@ -31,13 +33,18 @@ import java.util.List;
  *   Monthly EMI computed using standard formula.
  *   Helps user decide if they can afford repayment.
  */
+
 @Getter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class LenderResult {
 
     private String     lenderId;
     private String     lenderName;
     private String     logoUrl;
+    private String     applyUrl;          // "Apply Now" button URL
 
     // Eligibility result
     private Integer    approvalProbability;    // 0–100

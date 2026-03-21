@@ -83,6 +83,41 @@ const UserProfilePage = () => {
           {isFirstTime ? '✦ Step 1 of 2 — Basic Profile' : '✦ Edit Profile'}
         </span>
 
+        {/* Google profile picture — shown when editing existing profile */}
+        {!isFirstTime && user?.profilePictureUrl && (
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 'var(--space-4)',
+            marginBottom: 'var(--space-4)',
+          }}>
+            <img
+              src={user.profilePictureUrl}
+              alt={user.fullName ?? 'Profile'}
+              style={{
+                width: 64, height: 64, borderRadius: '50%',
+                objectFit: 'cover',
+                border: '2px solid var(--color-border-brand)',
+              }}
+              onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }}
+            />
+            <div>
+              <p style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-xl)', color: 'var(--color-text-primary)' }}>
+                {user.fullName}
+              </p>
+              <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-muted)' }}>
+                {user.email}
+              </p>
+              {user.role && (
+                <span
+                  className={`badge ${user.role === 'ADMIN' ? 'badge-danger' : 'badge-info'}`}
+                  style={{ marginTop: 'var(--space-1)', display: 'inline-block' }}
+                >
+                  {user.role}
+                </span>
+              )}
+            </div>
+          </div>
+        )}
+
         <h1 className="user-profile-page__title">
           {isFirstTime ? 'Tell us about yourself' : 'Your Profile'}
         </h1>

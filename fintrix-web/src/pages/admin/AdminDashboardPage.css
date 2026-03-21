@@ -1,0 +1,67 @@
+/* ================================================================
+   AdminDashboardPage.css
+   BEM root: .admin-dash
+================================================================ */
+
+@import '../../styles/variables.css';
+
+.admin-dash__header { margin-bottom: var(--space-8); }
+
+.admin-dash__title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  color: var(--color-text-primary);
+  letter-spacing: var(--tracking-snug);
+  margin-bottom: var(--space-1);
+}
+
+.admin-dash__sub {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  font-weight: var(--font-light);
+}
+
+.admin-dash__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-5);
+  animation: adFade 0.4s ease both;
+}
+
+.admin-dash__kpi {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  transition: border-color var(--transition-base);
+}
+
+.admin-dash__kpi:hover { border-color: var(--color-border-muted); }
+
+.admin-dash__kpi-icon { font-size: 1.5rem; line-height: 1; }
+
+.admin-dash__kpi-label {
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-disabled);
+}
+
+.admin-dash__kpi-value {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  color: var(--color-text-primary);
+  letter-spacing: var(--tracking-snug);
+}
+
+.admin-dash__kpi-value--brand { color: var(--color-brand-primary); }
+.admin-dash__kpi-value--warn  { color: var(--color-warning); }
+
+@keyframes adFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

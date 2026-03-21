@@ -65,10 +65,12 @@ const useFraudCheck = () => {
     }
   }, []);
 
-  // Load history on mount
+  // Load history on mount — only if not already fetched
   useEffect(() => {
-    fetchHistory();
-  }, [fetchHistory]);
+    if (history.length === 0) {
+      fetchHistory();
+    }
+  }, [fetchHistory, history.length]);
 
   const resetResult = useCallback(() => {
     setResult(null);

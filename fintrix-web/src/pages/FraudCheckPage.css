@@ -341,3 +341,105 @@
 @media (max-width: 500px) {
   .fraud-page { padding: var(--space-6) var(--space-4) var(--space-16); }
 }
+
+/* ── Keyword warning (live, as user types) ───────────────────── */
+.fraud-page__keyword-warning {
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-danger-bg);
+  border: 1px solid var(--color-danger-border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  color: var(--color-danger-text);
+  line-height: var(--leading-normal);
+  animation: kwPop 0.2s ease both;
+}
+
+@keyframes kwPop {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fraud-page__keyword-warning-title {
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--space-1);
+}
+
+/* ── Known patterns panel ────────────────────────────────────── */
+.fraud-page__patterns {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-6);
+  margin-top: var(--space-5);
+}
+
+.fraud-page__patterns-title {
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+}
+
+.fraud-page__patterns-section {
+  margin-bottom: var(--space-4);
+}
+
+.fraud-page__patterns-section:last-child {
+  margin-bottom: 0;
+}
+
+.fraud-page__patterns-section-label {
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-disabled);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  margin-bottom: var(--space-2);
+}
+
+.fraud-page__patterns-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.fraud-page__pattern-tag {
+  font-size: var(--text-xs);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+.fraud-page__pattern-tag--critical {
+  background: var(--color-danger-bg);
+  color: var(--color-danger-text);
+  border-color: var(--color-danger-border);
+}
+
+.fraud-page__pattern-tag--critical:hover {
+  background: var(--color-danger);
+  color: #fff;
+}
+
+.fraud-page__pattern-tag--warn {
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+  border-color: var(--color-warning-border);
+}
+
+.fraud-page__pattern-tag--warn:hover {
+  background: var(--color-warning);
+  color: #fff;
+}
+
+.fraud-page__pattern-note {
+  font-size: var(--text-xs);
+  color: var(--color-text-disabled);
+  font-style: italic;
+  margin-top: var(--space-3);
+  line-height: var(--leading-normal);
+}

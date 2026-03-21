@@ -1,9 +1,3 @@
-
-
-// ================================================================
-// FILE 2: FinancialProfileResponse.java
-// What we SEND BACK to the frontend
-// ================================================================
 package com.fintrix.modules.financialprofile.dto;
 
 import com.fintrix.modules.financialprofile.domain.EmploymentType;
@@ -15,21 +9,6 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
-/**
- * FinancialProfileResponse
- *
- * Includes computed fields that the service calculates:
- *  - foir               → Fixed Obligation to Income Ratio
- *  - monthlySavings     → income - expenses - EMIs
- *  - creditScoreRange   → EXCELLENT / GOOD / FAIR / POOR
- *  - financialHealthScore → 0-100 computed score
- *  - riskLevel          → LOW / MEDIUM / HIGH / CRITICAL
- *
- * Frontend uses these directly to show:
- *  - "Your FOIR is 42% — lenders prefer below 50%"
- *  - "Credit score range: GOOD (700-749)"
- *  - Risk badge on dashboard
- */
 @Getter
 @Builder
 @NoArgsConstructor
@@ -39,33 +18,45 @@ public class FinancialProfileResponse {
     private String         id;
     private String         userId;
 
-    // ── Employment ───────────────────────────────────────────
+    // ── Employment ────────────────────────────────────────────
     private EmploymentType employmentType;
     private String         employerName;
     private Integer        yearsOfExperience;
 
-    // ── Income & Expenses ────────────────────────────────────
+    // ── Income & Expenses ─────────────────────────────────────
     private BigDecimal     monthlyIncome;
     private BigDecimal     monthlyExpenses;
-    private BigDecimal     monthlySavings;         // computed
+    private BigDecimal     monthlySavings;
     private BigDecimal     existingEmiTotal;
+    private Integer        numberOfActiveLoans;
 
-    // ── Credit Profile ───────────────────────────────────────
+    // ── Credit Profile ────────────────────────────────────────
     private Integer        creditScore;
-    private String         creditScoreRange;       // computed label
+    private String         creditScoreRange;
     private Integer        numberOfCreditCards;
     private BigDecimal     totalCreditLimit;
     private BigDecimal     currentCreditUtilization;
 
-    // ── Computed by Decision Engine ──────────────────────────
-    private BigDecimal     foir;                   // computed
-    private Integer        financialHealthScore;   // computed
-    private RiskLevel      riskLevel;              // computed
+    // ── Computed ratios ───────────────────────────────────────
 
-    // ── Preferences ──────────────────────────────────────────
+    // FOIR: existingEMI / income × 100
+    // What banks check — only loan EMIs counted
+    private BigDecimal     foir;
+
+    // DTI: (existingEMI + monthlyExpenses) / income × 100
+    // Full financial obligation picture — includes rent, food, utilities
+    // A person with high rent but zero loans has low FOIR but high DTI
+    private BigDecimal     dti;
+    private String         dtiRange;   // LOW / MODERATE / HIGH / CRITICAL
+
+    // ── Other computed ────────────────────────────────────────
+    private Integer        financialHealthScore;
+    private RiskLevel      riskLevel;
+
+    // ── Preferences ───────────────────────────────────────────
     private String         preferredRewardType;
     private String         topSpendingCategory;
 
-    // ── Profile completeness ─────────────────────────────────
+    // ── Profile completeness ──────────────────────────────────
     private Boolean        isComplete;
 }

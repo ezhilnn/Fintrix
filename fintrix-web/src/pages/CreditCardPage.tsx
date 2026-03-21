@@ -13,14 +13,69 @@
 //   futureCards        — not yet eligible (motivational)
 // ================================================================
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useCreditCardRecommendation from '../hooks/useCreditCardRecommendation';
-import { REWARD_TYPE_LABELS } from '../utils/constants';
-import { formatCurrency } from '../utils/formatters';
+import TrackingService             from '../services/tracking.service';
+import { REWARD_TYPE_LABELS, TRACK_EVENTS } from '../utils/constants';
+import { formatCurrency }          from '../utils/formatters';
 import type { CardResult, CardRecommendationRequest } from '../types/api.types';
 import './CreditCardPage.css';
 
 const SPEND_CATS = ['FOOD', 'SHOPPING', 'TRAVEL', 'FUEL', 'ENTERTAINMENT', 'HEALTHCARE'];
+
+// ── Apply Now button — fetches affiliate link, falls back gracefully ──
+const ApplyButton = ({
+  cardId,
+  approvalProbability,
+  applyUrl
+}: {
+  cardId: string;
+  approvalProbability: number;
+  applyUrl?:string
+}) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleApply = async () => {
+    setLoading(true);
+    TrackingService.trackEvent({
+      eventType: TRACK_EVENTS.APPLY_CLICK,
+      entityId:  cardId,
+      page:      '/credit-card',
+    });
+      // Use direct lender apply URL if configured — no API call needed
+    if (applyUrl) {
+      window.open(applyUrl, '_blank', 'noopener,noreferrer');
+      setLoading(false);
+      return;
+    }
+    try {
+      const link = await TrackingService.getAffiliateLink(cardId, 'CARD', approvalProbability);
+      if (link.hasPartnership && link.trackedUrl) {
+        window.open(link.trackedUrl, '_blank', 'noopener,noreferrer');
+      } else {
+        window.open(
+          `https://www.google.com/search?q=${encodeURIComponent(cardId + ' credit card apply')}`,
+          '_blank',
+          'noopener,noreferrer'
+        );
+      }
+    } catch {
+      // silent fallback
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <button
+      className="btn btn-primary btn-sm btn-full"
+      onClick={handleApply}
+      disabled={loading}
+    >
+      {loading ? <><span className="spinner" /> Opening…</> : 'Apply Now →'}
+    </button>
+  );
+};
 
 // ── Individual card tile ───────────────────────────────────────
 const CardTile = ({
@@ -132,12 +187,25 @@ const CardTile = ({
         ))}
       </div>
     )}
+
+    {/* Apply Now — only for eligible cards (not future/ineligible) */}
+    {card.isEligible && variant !== 'future' && (
+      <ApplyButton
+        cardId={card.cardId}
+        approvalProbability={card.approvalProbability}
+        applyUrl={card.applyUrl}
+      />
+    )}
   </div>
 );
 
 // ── Page ───────────────────────────────────────────────────────
 const CreditCardPage = () => {
   const { result, isFetching, error, applyFilters } = useCreditCardRecommendation();
+
+  useEffect(() => {
+    TrackingService.trackEvent({ eventType: TRACK_EVENTS.PAGE_VIEW, page: '/credit-card' });
+  }, []);
 
   const [filters, setFilters] = useState<CardRecommendationRequest>({
     preferredRewardType:  '',

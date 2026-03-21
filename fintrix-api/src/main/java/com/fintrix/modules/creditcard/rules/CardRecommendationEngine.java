@@ -115,6 +115,7 @@ public class CardRecommendationEngine {
                 .bankName(card.getBankName())
                 .cardName(card.getCardName())
                 .logoUrl(card.getLogoUrl())
+                .applyUrl(card.getApplyUrl())
                 .cardCategory(card.getCardCategory())
                 .rewardType(card.getRewardType())
                 .approvalProbability(approvalProbability)

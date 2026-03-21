@@ -1,0 +1,62 @@
+/* ================================================================
+   NotificationBell.css
+   BEM root: .notif-bell
+   Sits in the Topbar (desktop) and Sidebar footer.
+================================================================ */
+
+@import '../../styles/variables.css';
+
+.notif-bell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.notif-bell:hover {
+  background: var(--color-bg-elevated);
+  color: var(--color-text-secondary);
+}
+
+.notif-bell__icon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+/* Unread count badge */
+.notif-bell__badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  background: var(--color-danger);
+  color: #fff;
+  font-size: 10px;
+  font-weight: var(--font-semibold);
+  font-family: var(--font-mono);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  /* Pulse when new notifications arrive */
+  animation: bellPulse 0.4s ease both;
+}
+
+@keyframes bellPulse {
+  0%   { transform: scale(0.5); opacity: 0; }
+  60%  { transform: scale(1.2); }
+  100% { transform: scale(1);   opacity: 1; }
+}

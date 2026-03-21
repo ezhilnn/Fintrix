@@ -3,24 +3,15 @@
 //
 // Mirrors FraudCheckController.java — /api/v1/fraud
 //
+// Feature 1 — Entity Check:
 //   POST /api/v1/fraud/check      → checkEntity()
 //   GET  /api/v1/fraud/my-alerts  → getMyAlerts()
 //
-// checkEntity() request fields:
-//   entityName  — @NotBlank — e.g. "ABC Investment Scheme"
-//   entityType  — @NotNull  — from EntityType enum:
-//     INVESTMENT_SCHEME | LENDER | BROKER | INSURANCE_COMPANY
-//     CRYPTOCURRENCY_PLATFORM | CHIT_FUND | OTHER
-//
-// checkEntity() response fields:
-//   isSafe           → overall verdict boolean
-//   severity         → LOW | MEDIUM | HIGH | CRITICAL
-//   isSebiRegistered → checked against SEBI data
-//   isRbiRegistered  → checked against RBI data
-//   redFlags         → list of specific warning strings
-//   safetyTips       → what the user should do
-//   verdict          → plain language summary
-//   regulatorCheckUrl → link so user can verify themselves
+// Feature 2 — Keyword Scan (NEW):
+//   POST /api/v1/fraud/scan              → scanText()
+//   GET  /api/v1/fraud/scan/content-types → getContentTypes()
+//   User pastes any text (WhatsApp, SMS, email, pitch)
+//   Backend scans for 200+ fraud keywords with fuzzy matching
 // ================================================================
 
 import { get, post } from './api.client';
@@ -28,19 +19,31 @@ import { API } from '../utils/constants';
 import type {
   FraudCheckRequest,
   FraudCheckResponse,
+  KeywordScanRequest,
+  KeywordScanResponse,
+  ContentTypeOption,
 } from '../types/api.types';
 
 const FraudService = {
 
-  // ── POST /api/v1/fraud/check ─────────────────────────────────
+  // ── Feature 1: Entity Registry Check ─────────────────────────
   checkEntity(request: FraudCheckRequest): Promise<FraudCheckResponse> {
     return post<FraudCheckResponse>(API.FRAUD_CHECK, request);
   },
 
-  // ── GET /api/v1/fraud/my-alerts ──────────────────────────────
-  // Returns all past fraud checks made by the current user.
   getMyAlerts(): Promise<FraudCheckResponse[]> {
     return get<FraudCheckResponse[]>(API.FRAUD_ALERTS);
+  },
+
+  // ── Feature 2: Free-text Keyword Scan (NEW) ───────────────────
+  // Paste any message text — returns per-keyword breakdown
+  scanText(request: KeywordScanRequest): Promise<KeywordScanResponse> {
+    return post<KeywordScanResponse>(API.FRAUD_SCAN, request);
+  },
+
+  // Returns content type options for the dropdown
+  getContentTypes(): Promise<ContentTypeOption[]> {
+    return get<ContentTypeOption[]>(API.FRAUD_CONTENT_TYPES);
   },
 };
 

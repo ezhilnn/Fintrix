@@ -37,11 +37,44 @@ export const API = {
   FINANCIAL_HEALTH_COMPUTE: '/api/v1/financial-health/compute',
 
   // FraudCheckController — /api/v1/fraud
-  FRAUD_CHECK:    '/api/v1/fraud/check',
-  FRAUD_ALERTS:   '/api/v1/fraud/my-alerts',
+  FRAUD_CHECK:          '/api/v1/fraud/check',
+  FRAUD_ALERTS:         '/api/v1/fraud/my-alerts',
+  FRAUD_SCAN:           '/api/v1/fraud/scan',
+  FRAUD_CONTENT_TYPES:  '/api/v1/fraud/scan/content-types',
 
   // DashboardController (BFF) — /api/v1/bff
   DASHBOARD: '/api/v1/bff/dashboard',
+
+  // EmiTrackerController — /api/v1/emi-tracker
+  EMI_TRACKER:        '/api/v1/emi-tracker',
+  EMI_TRACKER_DELETE: (id: string) => `/api/v1/emi-tracker/${id}`,
+
+  // NotificationController — /api/v1/notifications
+  NOTIFICATIONS:             '/api/v1/notifications',
+  NOTIFICATIONS_TOKEN:       '/api/v1/notifications/token',
+  NOTIFICATIONS_UNREAD:      '/api/v1/notifications/unread-count',
+  NOTIFICATIONS_READ_ALL:    '/api/v1/notifications/read-all',
+
+  // ConsentController — /api/v1/consent
+  CONSENT:          '/api/v1/consent',
+  CONSENT_GRANT:    '/api/v1/consent/grant',
+  CONSENT_WITHDRAW: '/api/v1/consent/withdraw',
+
+  // TrackingController — /api/v1/tracking
+  TRACK_EVENT:      '/api/v1/tracking/event',
+  AFFILIATE_LINK:   '/api/v1/tracking/affiliate-link',
+
+  // Admin — /api/v1/admin  (role=ADMIN only)
+  ADMIN_DASHBOARD:          '/api/v1/admin/dashboard',
+  ADMIN_LENDERS:            '/api/v1/admin/lenders',
+  ADMIN_LENDER_TOGGLE:      (id: string) => `/api/v1/admin/lenders/${id}/toggle`,
+  ADMIN_LENDER_UPDATE:      (id: string) => `/api/v1/admin/lenders/${id}`,
+  ADMIN_LENDER_DELETE:      (id: string) => `/api/v1/admin/lenders/${id}`,
+  ADMIN_CARDS:              '/api/v1/admin/cards',
+  ADMIN_CARD_UPDATE:        (id: string) => `/api/v1/admin/cards/${id}`,
+  ADMIN_CARD_DELETE:        (id: string) => `/api/v1/admin/cards/${id}`,
+  ADMIN_FRAUD_KEYWORDS:     '/api/v1/admin/fraud/keywords',
+  ADMIN_FRAUD_KEYWORD_DEL:  (id: string) => `/api/v1/admin/fraud/keywords/${id}`,
 } as const;
 
 // ── Frontend routes ──────────────────────────────────────────────
@@ -54,7 +87,16 @@ export const ROUTES = {
   LOAN:                 '/loan',
   CREDIT_CARD:          '/credit-card',
   FRAUD_CHECK:          '/fraud-check',
+  EMI_TRACKER:          '/emi-tracker',
+  NOTIFICATIONS:        '/notifications',
+  CONSENT:              '/consent',
   ACCOUNT_DEACTIVATED:  '/account-deactivated',
+  // Admin routes — only reachable if role=ADMIN
+  ADMIN:                '/admin',
+  ADMIN_DASHBOARD:      '/admin/dashboard',
+  ADMIN_LENDERS:        '/admin/lenders',
+  ADMIN_CARDS:          '/admin/cards',
+  ADMIN_FRAUD:          '/admin/fraud',
   NOT_FOUND:            '*',
 } as const;
 
@@ -106,10 +148,12 @@ export const REWARD_TYPE_LABELS: Record<string, string> = {
 
 // ── AlertSeverity labels — matches AlertSeverity.java ────────────
 export const ALERT_SEVERITY_LABELS: Record<string, string> = {
-  LOW:      'Low Risk',
-  MEDIUM:   'Medium Risk',
-  HIGH:     'High Risk',
-  CRITICAL: 'Critical',
+  SAFE:       'Verified',
+  UNVERIFIED: 'Unverified',
+  LOW:        'Low Risk',
+  MEDIUM:     'Medium Risk',
+  HIGH:       'High Risk',
+  CRITICAL:   'Critical',
 };
 
 // ── EntityType labels — matches EntityType.java ──────────────────
@@ -149,3 +193,28 @@ export const INDIAN_STATES = [
   'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal',
   'Delhi', 'Chandigarh', 'Puducherry', 'Ladakh', 'Jammu & Kashmir',
 ] as const;
+
+// ── ConsentType labels ────────────────────────────────────────────
+export const CONSENT_TYPE_LABELS: Record<string, string> = {
+  DATA_PROCESSING:  'Data Processing',
+  MARKETING:        'Marketing Communications',
+  CREDIT_CHECK:     'Credit Check Authorization',
+  THIRD_PARTY_SHARE:'Share with Partners',
+};
+
+// ── Notification type labels ──────────────────────────────────────
+export const NOTIFICATION_TYPE_LABELS: Record<string, string> = {
+  EMI_REMINDER:  'EMI Reminder',
+  SCORE_UPDATE:  'Score Update',
+  FRAUD_ALERT:   'Fraud Alert',
+  OFFER:         'New Offer',
+};
+
+// ── Tracking event types ──────────────────────────────────────────
+export const TRACK_EVENTS = {
+  PAGE_VIEW:   'PAGE_VIEW',
+  CARD_VIEW:   'CARD_VIEW',
+  LOAN_VIEW:   'LOAN_VIEW',
+  APPLY_CLICK: 'APPLY_CLICK',
+  FRAUD_CHECK: 'FRAUD_CHECK',
+} as const;

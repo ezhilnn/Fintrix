@@ -43,4 +43,6 @@ public interface UserRepository extends JpaRepository<User, String> {
     // Used by dashboard — check if profile setup is complete
     @Query("SELECT u.isProfileComplete FROM User u WHERE u.id = :userId")
     Optional<Boolean> findIsProfileCompleteById(String userId);
+    long countByIsActiveTrue();
+
 }

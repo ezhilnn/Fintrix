@@ -10,6 +10,9 @@ import lombok.Getter;
 
 import java.math.BigDecimal;
 import java.util.List;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * LoanEligibilityResponse
@@ -36,6 +39,9 @@ import java.util.List;
  */
 @Getter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class LoanEligibilityResponse {
 
     // What was requested

@@ -50,18 +50,23 @@ export interface FinancialProfileResponse {
   // Income & Expenses
   monthlyIncome: number;
   monthlyExpenses?: number;
-  monthlySavings?: number;          // computed by backend
+  monthlySavings?: number;          // computed: income - expenses - emi
   existingEmiTotal?: number;
+  numberOfActiveLoans?: number;     // now returned in response
 
   // Credit Profile
   creditScore?: number;
-  creditScoreRange?: string;        // computed label e.g. "GOOD"
+  creditScoreRange?: string;        // EXCELLENT | GOOD | FAIR | POOR | UNKNOWN
   numberOfCreditCards?: number;
   totalCreditLimit?: number;
   currentCreditUtilization?: number;
 
-  // Computed by Decision Engine
-  foir?: number;                    // Fixed Obligation to Income Ratio
+  // Computed ratios
+  foir?: number;                    // existingEMI / income × 100 (bank eligibility check)
+  dti?: number;                     // (existingEMI + expenses) / income × 100 (full picture)
+  dtiRange?: string;                // LOW | MODERATE | HIGH | CRITICAL
+
+  // Health
   financialHealthScore?: number;    // 0–100
   riskLevel?: RiskLevel;
 

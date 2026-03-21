@@ -132,6 +132,7 @@ public class LoanRuleEngine {
                 .lenderId(lender.getId())
                 .lenderName(lender.getName())
                 .logoUrl(lender.getLogoUrl())
+                .applyUrl(lender.getApplyUrl())
                 .approvalProbability(approvalProbability)
                 .isEligible(approvalProbability >= ELIGIBLE_THRESHOLD
                         && !hardFailed)

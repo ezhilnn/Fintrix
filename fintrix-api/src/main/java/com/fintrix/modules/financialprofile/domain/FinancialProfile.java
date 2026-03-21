@@ -3,28 +3,13 @@ package com.fintrix.modules.financialprofile.domain;
 import com.fintrix.infrastructure.persistence.AuditableEntity;
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.math.BigDecimal;
 
-/**
- * FinancialProfile stores a user's self-reported financial data.
- *
- * Design decisions:
- *  - One profile per user (OneToOne)
- *  - Credit score is optional (user may not know it)
- *  - All monetary values in INR, stored as BigDecimal for precision
- *  - FOIR (Fixed Obligation to Income Ratio) calculated at service layer
- *  - No Aadhaar / PAN stored — regulatory compliance
- */
 @Entity
 @Table(name = "financial_profiles", indexes = {
     @Index(name = "idx_fp_user_id", columnList = "user_id", unique = true)
 })
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class FinancialProfile extends AuditableEntity {
 
     @Id
@@ -32,11 +17,10 @@ public class FinancialProfile extends AuditableEntity {
     @Column(name = "id", updatable = false, nullable = false)
     private String id;
 
-    // ── Relationship ─────────────────────────────────────────
     @Column(name = "user_id", nullable = false, unique = true)
     private String userId;
 
-    // ── Employment ───────────────────────────────────────────
+    // ── Employment ────────────────────────────────────────────
     @Enumerated(EnumType.STRING)
     @Column(name = "employment_type", nullable = false)
     private EmploymentType employmentType;
@@ -47,7 +31,7 @@ public class FinancialProfile extends AuditableEntity {
     @Column(name = "years_of_experience")
     private Integer yearsOfExperience;
 
-    // ── Income & Expenses (Monthly, INR) ─────────────────────
+    // ── Income & Expenses ─────────────────────────────────────
     @Column(name = "monthly_income", nullable = false, precision = 12, scale = 2)
     private BigDecimal monthlyIncome;
 
@@ -57,7 +41,7 @@ public class FinancialProfile extends AuditableEntity {
     @Column(name = "monthly_savings", precision = 12, scale = 2)
     private BigDecimal monthlySavings;
 
-    // ── Existing Obligations ─────────────────────────────────
+    // ── Existing Obligations ──────────────────────────────────
     @Column(name = "existing_emi_total", precision = 12, scale = 2)
     @Builder.Default
     private BigDecimal existingEmiTotal = BigDecimal.ZERO;
@@ -66,12 +50,12 @@ public class FinancialProfile extends AuditableEntity {
     @Builder.Default
     private Integer numberOfActiveLoans = 0;
 
-    // ── Credit Profile ───────────────────────────────────────
+    // ── Credit Profile ────────────────────────────────────────
     @Column(name = "credit_score")
-    private Integer creditScore;                   // null if user doesn't know
+    private Integer creditScore;
 
     @Column(name = "credit_score_range", length = 20)
-    private String creditScoreRange;              // EXCELLENT / GOOD / FAIR / POOR
+    private String creditScoreRange;
 
     @Column(name = "number_of_credit_cards")
     @Builder.Default
@@ -83,25 +67,36 @@ public class FinancialProfile extends AuditableEntity {
 
     @Column(name = "current_credit_utilization", precision = 5, scale = 2)
     @Builder.Default
-    private BigDecimal currentCreditUtilization = BigDecimal.ZERO;   // percentage 0-100
+    private BigDecimal currentCreditUtilization = BigDecimal.ZERO;
 
-    // ── Spending Preferences ─────────────────────────────────
+    // ── Spending Preferences ──────────────────────────────────
     @Column(name = "preferred_reward_type", length = 50)
-    private String preferredRewardType;            // CASHBACK / TRAVEL / FUEL / SHOPPING
+    private String preferredRewardType;
 
     @Column(name = "top_spending_category", length = 100)
     private String topSpendingCategory;
 
-    // ── Derived / Computed (updated by Decision Engine) ──────
+    // ── Computed fields ───────────────────────────────────────
+
+    // FOIR = existingEMI / income × 100
+    // Only counts loan EMIs — what banks check for eligibility
     @Column(name = "foir", precision = 5, scale = 2)
-    private BigDecimal foir;                       // Fixed Obligation to Income Ratio
+    private BigDecimal foir;
+
+    // DTI = (existingEMI + monthlyExpenses) / income × 100
+    // Counts ALL obligations — broader picture of financial health
+    // FOIR ignores rent/food/utilities; DTI includes everything
+    @Column(name = "dti", precision = 5, scale = 2)
+    private BigDecimal dti;
+
+    // DTI range label: LOW (<30%) / MODERATE (30-43%) / HIGH (43-50%) / CRITICAL (50%+)
+    @Column(name = "dti_range", length = 20)
+    private String dtiRange;
 
     @Column(name = "financial_health_score")
-    private Integer financialHealthScore;          // 0–100, computed by ScoreCalculator
+    private Integer financialHealthScore;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "risk_level", length = 20)
     private RiskLevel riskLevel;
 }
-
-

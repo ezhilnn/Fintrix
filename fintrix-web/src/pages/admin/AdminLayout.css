@@ -1,0 +1,70 @@
+/* ================================================================
+   AdminLayout.css
+   BEM root: .admin-layout
+   Adds a secondary top-nav bar for admin sub-sections.
+   Sits inside AppLayout (sidebar still present).
+================================================================ */
+
+@import '../../styles/variables.css';
+
+.admin-layout__topbar {
+  background: var(--color-bg-surface);
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding: 0 var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  overflow-x: auto;
+}
+
+.admin-layout__topbar::-webkit-scrollbar { display: none; }
+
+.admin-layout__badge {
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  padding: 3px 8px;
+  background: var(--color-danger-bg);
+  color: var(--color-danger-text);
+  border: 1px solid var(--color-danger-border);
+  border-radius: var(--radius-full);
+  margin-right: var(--space-4);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.admin-layout__tab {
+  padding: var(--space-4) var(--space-4);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  text-decoration: none;
+  background: none;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  font-family: var(--font-body);
+}
+
+.admin-layout__tab:hover {
+  color: var(--color-text-secondary);
+}
+
+.admin-layout__tab--active {
+  color: var(--color-brand-primary);
+  border-bottom-color: var(--color-brand-primary);
+}
+
+.admin-layout__content {
+  padding: var(--space-8) var(--space-6) var(--space-20);
+}
+
+@media (max-width: 600px) {
+  .admin-layout__content { padding: var(--space-6) var(--space-4) var(--space-16); }
+}

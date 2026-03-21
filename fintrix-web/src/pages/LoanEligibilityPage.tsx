@@ -9,10 +9,11 @@
 //   purpose         optional string
 // ================================================================
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { FormEvent } from 'react';
-import useLoanEligibility from '../hooks/useLoanEligibility';
-import { LOAN_TYPE_LABELS } from '../utils/constants';
+import useLoanEligibility  from '../hooks/useLoanEligibility';
+import TrackingService     from '../services/tracking.service';
+import { LOAN_TYPE_LABELS, TRACK_EVENTS } from '../utils/constants';
 import { formatCurrency, formatPercent, calculateEmi, formatTenure } from '../utils/formatters';
 import { validateLoanAmount, validateTenure } from '../utils/scoreHelpers';
 import type { LoanEligibilityRequest, LenderResult } from '../types/loan.types';
@@ -24,6 +25,61 @@ const approvalPillClass = (prob: number) =>
   prob >= 70 ? 'loan-page__approval-pill--high' :
   prob >= 40 ? 'loan-page__approval-pill--med' :
                'loan-page__approval-pill--low';
+
+// ── Apply Now button ──────────────────────────────────────────
+// Priority: 1. direct applyUrl from lender record
+//           2. affiliate tracked link (if partnership exists)
+//           3. fallback Google search
+const ApplyButton = ({
+  entityId,
+  approvalProbability,
+  applyUrl,
+}: {
+  entityId: string;
+  approvalProbability: number;
+  applyUrl?: string;
+}) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleApply = async () => {
+    setLoading(true);
+    TrackingService.trackEvent({
+      eventType: TRACK_EVENTS.APPLY_CLICK,
+      entityId,
+      page: '/loan',
+    });
+
+    // Use direct lender apply URL if configured — no API call needed
+    if (applyUrl) {
+      window.open(applyUrl, '_blank', 'noopener,noreferrer');
+      setLoading(false);
+      return;
+    }
+
+    // Fall back to affiliate tracking link
+    try {
+      const link = await TrackingService.getAffiliateLink(entityId, 'LOAN', approvalProbability);
+      if (link.hasPartnership && link.trackedUrl) {
+        window.open(link.trackedUrl, '_blank', 'noopener,noreferrer');
+      } else {
+        window.open(
+          `https://www.google.com/search?q=${encodeURIComponent(entityId + ' loan apply')}`,
+          '_blank', 'noopener,noreferrer'
+        );
+      }
+    } catch {
+      // silent fallback
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <button className="btn btn-primary btn-sm" onClick={handleApply} disabled={loading}>
+      {loading ? <><span className="spinner" /> Opening…</> : 'Apply Now →'}
+    </button>
+  );
+};
 
 // ── Lender card ────────────────────────────────────────────────
 const LenderCard = ({ lender }: { lender: LenderResult }) => (
@@ -95,12 +151,27 @@ const LenderCard = ({ lender }: { lender: LenderResult }) => (
         ))}
       </div>
     )}
+
+    {/* Apply Now — only for eligible lenders */}
+    {lender.isEligible && (
+      <div style={{ paddingTop: 'var(--space-3)', borderTop: '1px solid var(--color-border-subtle)' }}>
+        <ApplyButton
+          entityId={lender.lenderId}
+          approvalProbability={lender.approvalProbability}
+          applyUrl={lender.applyUrl}
+        />
+      </div>
+    )}
   </div>
 );
 
 // ── Page ───────────────────────────────────────────────────────
 const LoanEligibilityPage = () => {
   const { result, isChecking, error, fieldErrors, checkEligibility, reset } = useLoanEligibility();
+
+  useEffect(() => {
+    TrackingService.trackEvent({ eventType: TRACK_EVENTS.PAGE_VIEW, page: '/loan' });
+  }, []);
 
   const [form, setForm] = useState<LoanEligibilityRequest>({
     loanType:        'PERSONAL_LOAN' as LoanType,
